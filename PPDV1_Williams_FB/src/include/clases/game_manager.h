@@ -6,10 +6,13 @@
 class GameManager 
 {
 private:
-
+	const int screenWidth = 800;
+	const int screenHeight = 450;
 public:
 	GameManager();
 	~GameManager();
+
+	void Run();
 };
 
 #endif
