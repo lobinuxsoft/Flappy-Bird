@@ -153,12 +153,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\define\clases\button.cpp" />
     <ClCompile Include="src\define\clases\game_manager.cpp" />
     <ClCompile Include="src\define\clases\menu.cpp" />
     <ClCompile Include="src\define\clases\scene_manager.cpp" />
     <ClCompile Include="src\define\other\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\include\clases\button.h" />
     <ClInclude Include="src\include\clases\game_manager.h" />
     <ClInclude Include="src\include\clases\menu.h" />
     <ClInclude Include="src\include\clases\scene_manager.h" />
