@@ -2,9 +2,9 @@
 
 GameManager::GameManager() 
 {
-	InitWindow(screenWidth, screenHeight, "Flappy Bird");
+	InitWindow(screenWidth, screenHeight, tittle);
 
-	SetTargetFPS(60);
+	SetTargetFPS(fps);
 }
 GameManager::~GameManager() 
 {

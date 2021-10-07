@@ -26,5 +26,8 @@
     <ClInclude Include="src\include\clases\game_manager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="src\include\other\variables.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
