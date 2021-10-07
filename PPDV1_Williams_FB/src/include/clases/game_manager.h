@@ -1,7 +1,7 @@
 #ifndef game_manager_h
 #define game_manager_h
 
-#include "variables.h"
+#include "scene_manager.h"
 
 class GameManager 
 {
