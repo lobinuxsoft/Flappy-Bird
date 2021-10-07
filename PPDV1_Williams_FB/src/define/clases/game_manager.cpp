@@ -5,10 +5,14 @@ GameManager::GameManager()
 	InitWindow(screenWidth, screenHeight, tittle);
 
 	SetTargetFPS(fps);
+
+    Init();
 }
 GameManager::~GameManager() 
 {
 	CloseWindow();
+
+    Deinit();
 }
 
 void GameManager::Init()
@@ -21,8 +25,6 @@ void GameManager::Deinit()
 }
 void GameManager::Run() 
 {
-    Init();
-
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
         switch (sceneManager->GetCurrentScene()) 
@@ -41,7 +43,5 @@ void GameManager::Run()
         case Scenes::gameplay:
             break;
         }        
-    }
-
-    Deinit();
+    }    
 }
