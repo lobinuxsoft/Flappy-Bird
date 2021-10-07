@@ -6,11 +6,13 @@
 class GameManager 
 {
 private:
-	
+	SceneManager* sceneManager;
 public:
 	GameManager();
 	~GameManager();
 
+	void Init();
+	void Deinit();
 	void Run();
 };
 
