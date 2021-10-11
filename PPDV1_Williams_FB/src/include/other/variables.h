@@ -1,7 +1,11 @@
 #ifndef variables_h
 #define variables_h
 
+#include <iostream>
+
 #include "raylib.h"
+
+using namespace std;
 
 //Window
 const int screenWidth = 800;
@@ -22,5 +26,8 @@ const Color buttonColor = BLACK;
 //Menu
 const short maxButtonsMenu = 3;
 const Color menuClearBackgroundColor = WHITE;
+
+//Credits
+const Color creditsClearBackgroundColor = WHITE;
 
 #endif

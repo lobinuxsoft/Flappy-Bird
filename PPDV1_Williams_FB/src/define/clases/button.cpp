@@ -13,7 +13,7 @@ bool Button::IsMouseOnButton()
 }
 bool Button::IsButtonPressed() 
 {
-	return IsKeyPressed(pressButtonKey) && IsMouseOnButton();
+	return IsMouseButtonPressed(pressButtonKey) && IsMouseOnButton();
 }
 void Button::DrawButton() 
 {
@@ -22,8 +22,8 @@ void Button::DrawButton()
 }
 void Button::ChangeSceneWhenButtonPressed(SceneManager* sceneManager, Scenes nextScene)
 {
-	if (IsButtonPressed()) 
-	{
+	if (IsButtonPressed())
+	{		
 		sceneManager->SetCurrentScene(nextScene);
 	}
 }

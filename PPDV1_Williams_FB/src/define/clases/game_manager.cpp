@@ -34,11 +34,14 @@ void GameManager::Init()
     menuInputScenes[0] = Scenes::gameplay;
     menuInputScenes[1] = Scenes::credits;
     menuInputScenes[2] = Scenes::exit;
+
+    credits = new Credits();
 }
 void GameManager::Deinit()
 {
     delete sceneManager;
     delete menu;
+    delete credits;
 }
 void GameManager::Run() 
 {
@@ -54,6 +57,11 @@ void GameManager::Run()
 
             break;
         case Scenes::credits:
+
+            credits->Input(sceneManager);
+            credits->Update();
+            credits->Draw();
+
             break;
         case Scenes::gameplay:
             break;
