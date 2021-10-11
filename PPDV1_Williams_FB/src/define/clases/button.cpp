@@ -18,7 +18,7 @@ bool Button::IsButtonPressed()
 void Button::DrawButton() 
 {
 	DrawRectangleRec(rec, color);
-	DrawText(text, GetScreenWidth() / 2, GetScreenHeight() / 2, buttonFontSize, textColor);
+	DrawText(text, static_cast<int>(rec.x + rec.width / 2), static_cast<int>(rec.y + rec.height / 2), buttonFontSize, textColor);
 }
 void Button::ChangeSceneWhenButtonPressed(SceneManager* sceneManager, Scenes nextScene)
 {

@@ -10,8 +10,12 @@ private:
 	Button* creditsButton;
 	Button* exitButton;
 public:
-	Menu();
+	Menu(Rectangle recs[maxButtonsMenu], const char* texts[maxButtonsMenu]);
 	~Menu();
+
+	void Input(SceneManager* sceneManager, Scenes scenes[maxButtonsMenu]);
+	void Update();
+	void Draw();
 };
 
 #endif
