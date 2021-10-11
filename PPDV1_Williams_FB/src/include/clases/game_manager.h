@@ -12,6 +12,8 @@ private:
 	Credits* credits;
 
 	Scenes menuInputScenes[maxButtonsMenu];
+
+	bool exit;
 public:
 	GameManager();
 	~GameManager();

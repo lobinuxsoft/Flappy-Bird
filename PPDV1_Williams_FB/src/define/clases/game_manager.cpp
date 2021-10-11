@@ -36,6 +36,8 @@ void GameManager::Init()
     menuInputScenes[2] = Scenes::exit;
 
     credits = new Credits();
+
+    exit = false;
 }
 void GameManager::Deinit()
 {
@@ -45,7 +47,7 @@ void GameManager::Deinit()
 }
 void GameManager::Run() 
 {
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    while (!WindowShouldClose() && !exit)    // Detect window close button or ESC key
     {
         switch (sceneManager->GetCurrentScene()) 
         {
@@ -66,6 +68,9 @@ void GameManager::Run()
         case Scenes::gameplay:
             break;
         case Scenes::exit:
+
+            exit = true;
+
             break;
         }        
     }    
