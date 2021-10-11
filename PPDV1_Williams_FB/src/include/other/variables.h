@@ -13,4 +13,9 @@ static const char* tittle = "Flappy Bird";
 enum class Scenes {menu, credits, gameplay};
 const Scenes initialScene = Scenes::menu;
 
+//Buttons
+const int pressButtonKey = MOUSE_LEFT_BUTTON;
+const int buttonFontSize = 30;
+const Color textColor = RED;
+
 #endif

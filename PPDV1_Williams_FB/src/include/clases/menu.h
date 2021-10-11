@@ -6,7 +6,9 @@
 class Menu 
 {
 private:
-
+	Button* playButton;
+	Button* creditsButton;
+	Button* exitButton;
 public:
 	Menu();
 	~Menu();
