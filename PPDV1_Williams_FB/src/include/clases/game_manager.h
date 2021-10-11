@@ -3,6 +3,7 @@
 
 #include "menu.h"
 #include "credits.h"
+#include "gameplay.h"
 
 class GameManager 
 {
@@ -10,6 +11,7 @@ private:
 	SceneManager* sceneManager;
 	Menu* menu;
 	Credits* credits;
+	Gameplay* gameplay;
 
 	Scenes menuInputScenes[maxButtonsMenu];
 

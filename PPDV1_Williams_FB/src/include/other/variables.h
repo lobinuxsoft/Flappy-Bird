@@ -30,4 +30,7 @@ const Color menuClearBackgroundColor = WHITE;
 //Credits
 const Color creditsClearBackgroundColor = WHITE;
 
+//Gameplay
+const Color gameClearBackgroundColor = WHITE;
+
 #endif

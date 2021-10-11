@@ -36,6 +36,7 @@ void GameManager::Init()
     menuInputScenes[2] = Scenes::exit;
 
     credits = new Credits();
+    gameplay = new Gameplay();
 
     exit = false;
 }
@@ -44,6 +45,7 @@ void GameManager::Deinit()
     delete sceneManager;
     delete menu;
     delete credits;
+    delete gameplay;
 }
 void GameManager::Run() 
 {
@@ -66,6 +68,11 @@ void GameManager::Run()
 
             break;
         case Scenes::gameplay:
+
+            gameplay->Input();
+            gameplay->Update();
+            gameplay->Draw();
+
             break;
         case Scenes::exit:
 
