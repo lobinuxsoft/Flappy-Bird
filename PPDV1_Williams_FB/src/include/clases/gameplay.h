@@ -1,7 +1,7 @@
 #ifndef gameplay_h
 #define gameplay_h
 
-#include "variables.h"
+#include "character.h"
 
 class Gameplay 
 {

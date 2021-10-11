@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\define\clases\button.cpp" />
+    <ClCompile Include="src\define\clases\character.cpp" />
     <ClCompile Include="src\define\clases\credits.cpp" />
     <ClCompile Include="src\define\clases\gameplay.cpp" />
     <ClCompile Include="src\define\clases\game_manager.cpp" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\clases\button.h" />
+    <ClInclude Include="src\include\clases\character.h" />
     <ClInclude Include="src\include\clases\credits.h" />
     <ClInclude Include="src\include\clases\gameplay.h" />
     <ClInclude Include="src\include\clases\game_manager.h" />
