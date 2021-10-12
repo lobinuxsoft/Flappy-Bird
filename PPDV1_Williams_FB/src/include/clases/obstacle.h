@@ -11,6 +11,11 @@ private:
 	Color color;
 public:
 	Obstacle();
+
+	void UpdateObstacle(float velocity);
+	void DrawObstacle();
+
+	void ResetObstaclePosition();
 };
 
 #endif

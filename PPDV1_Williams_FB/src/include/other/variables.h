@@ -32,11 +32,15 @@ const Color creditsClearBackgroundColor = WHITE;
 
 //Gameplay
 const Color gameClearBackgroundColor = WHITE;
-const Color characterColor = YELLOW;
 
 //Character
 enum class Move_Status {movingUp, movingDown, still};
 const int moveUpKey = KEY_W;
 const int moveDownKey = KEY_S;
+const Color characterColor = YELLOW;
+
+//Obstacle 
+const Color obstacleColor = BLUE;
+const float baseObstacleVelocity = 200;
 
 #endif
