@@ -29,6 +29,8 @@ const Color menuClearBackgroundColor = WHITE;
 
 //Credits
 const Color creditsClearBackgroundColor = WHITE;
+const Color creditsColor = BLACK;
+const short creditsFontSize = 25;
 
 //Gameplay
 const Color gameClearBackgroundColor = WHITE;

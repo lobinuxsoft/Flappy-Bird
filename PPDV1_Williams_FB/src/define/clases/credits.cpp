@@ -2,7 +2,7 @@
 
 Credits::Credits()
 {
-	goMenuButton = new Button( {static_cast<float>(GetScreenWidth() / 2), static_cast<float>(GetScreenHeight() / 2), 300.0f, 40.0f }, buttonColor, "MENU");
+	goMenuButton = new Button( {static_cast<float>(GetScreenWidth() / 2) - 150, static_cast<float>(GetScreenHeight() / 2), 300.0f, 40.0f }, buttonColor, "MENU");
 }
 Credits::~Credits()
 {
@@ -24,6 +24,8 @@ void Credits::Draw()
 	ClearBackground(creditsClearBackgroundColor);
 
 	goMenuButton->DrawButton();
+	
+	DrawText("GAME DEVELOPED BY WILLIAMS FACUNDO", GetScreenWidth() / 2 - 240, GetScreenHeight() / 2 - 50, creditsFontSize, creditsColor);
 
 	EndDrawing();
 }
