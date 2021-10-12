@@ -16,6 +16,8 @@ public:
 	void DrawObstacle();
 
 	void ResetObstaclePosition();
+	bool IsObstacleOnTheLeft();
+	void MoveObstacles(float velocity);
 };
 
 #endif

@@ -9,8 +9,12 @@ Obstacle::Obstacle()
 
 void Obstacle::UpdateObstacle(float velocity)
 {
-	topRec.x -= velocity * GetFrameTime();
-	downRec.x -= velocity * GetFrameTime();
+	MoveObstacles(velocity);
+
+	if (IsObstacleOnTheLeft()) 
+	{
+		ResetObstaclePosition();
+	}
 }
 void Obstacle::DrawObstacle()
 {
@@ -22,4 +26,13 @@ void Obstacle::ResetObstaclePosition()
 {
 	topRec.x = static_cast<float>(GetScreenWidth() - 100);
 	downRec.x = static_cast<float>(GetScreenWidth() - 100);
+}
+bool Obstacle::IsObstacleOnTheLeft() 
+{
+	return (topRec.x <= 0 || downRec.x <= 0);	
+}
+void Obstacle::MoveObstacles(float velocity)
+{
+	topRec.x -= velocity * GetFrameTime();
+	downRec.x -= velocity * GetFrameTime();
 }
