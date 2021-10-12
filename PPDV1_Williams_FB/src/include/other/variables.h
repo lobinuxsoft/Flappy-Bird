@@ -15,7 +15,7 @@ static const char* tittle = "Flappy Bird";
 
 //Scenes
 enum class Scenes {menu, credits, gameplay, exit};
-const Scenes initialScene = Scenes::gameplay;
+const Scenes initialScene = Scenes::menu;
 
 //Buttons
 const int pressButtonKey = MOUSE_LEFT_BUTTON;
@@ -44,5 +44,10 @@ const Color characterColor = YELLOW;
 //Obstacle 
 const Color obstacleColor = BLUE;
 const float baseObstacleVelocity = 200;
+
+//Texture
+const Color texturesColor = WHITE;
+const float backgroundSize = 2.0f;
+const float backgroundYPos = 20.0f;
 
 #endif
