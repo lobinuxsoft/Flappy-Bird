@@ -7,6 +7,13 @@ Character::Character()
 	radius = 25.0f;
 	moveStatus = Move_Status::still;
 	velocity = 200;
+	characterTexture = LoadTexture("assets/player/bluebird-midflap.png");
+	characterTexture.width = radius * 2;
+	characterTexture.height = radius * 2;
+}
+Character::~Character()
+{
+	UnloadTexture(characterTexture);
 }
 
 Vector2 Character::GetPosition()
@@ -27,8 +34,8 @@ void Character::UpdateCharacter()
 	Move();
 }
 void Character::DrawCharacter()
-{	
-	DrawCircleV(position, radius, color);
+{		
+	DrawTexture(characterTexture, static_cast<int>(position.x) - radius, static_cast<int>(position.y) - radius, color);	
 }
 
 void Character::Move()

@@ -9,10 +9,12 @@ private:
 	Vector2 position;
 	Color color;
 	Move_Status moveStatus;
+	Texture2D characterTexture;
 	float radius;
 	float velocity;
 public:
 	Character();
+	~Character();
 
 	Vector2 GetPosition();
 	float GetRadius();

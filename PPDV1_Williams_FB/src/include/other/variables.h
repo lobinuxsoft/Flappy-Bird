@@ -39,7 +39,7 @@ const Color gameClearBackgroundColor = WHITE;
 enum class Move_Status {movingUp, movingDown, still};
 const int moveUpKey = KEY_W;
 const int moveDownKey = KEY_S;
-const Color characterColor = YELLOW;
+const Color characterColor = WHITE;
 
 //Obstacle 
 const Color obstacleColor = BLUE;
