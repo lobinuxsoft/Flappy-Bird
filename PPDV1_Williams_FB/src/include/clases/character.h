@@ -12,6 +12,7 @@ private:
 	Texture2D characterTexture;
 	float radius;
 	float velocity;
+	float fallingSpeed;
 public:
 	Character();
 	~Character();
