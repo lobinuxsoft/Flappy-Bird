@@ -7,6 +7,15 @@ Obstacle::Obstacle()
 	color = obstacleColor;
 }
 
+Rectangle Obstacle::GetTopRec() 
+{
+	return topRec;
+}
+Rectangle Obstacle::GetDownRec() 
+{
+	return downRec;
+}
+
 void Obstacle::UpdateObstacle(float velocity)
 {
 	MoveObstacles(velocity);

@@ -3,6 +3,7 @@
 
 #include "character.h"
 #include "obstacle.h"
+#include "scene_manager.h"
 
 class Gameplay 
 {
@@ -16,8 +17,11 @@ public:
 	~Gameplay();
 
 	void Input();
-	void Update();
+	void Update(SceneManager* sceneManager);
 	void Draw();
+
+	bool CollisionCharacterObstacle(Character* character, Obstacle* obstacle);
+	void EndGameCondition(SceneManager* sceneManager);
 };
 
 #endif

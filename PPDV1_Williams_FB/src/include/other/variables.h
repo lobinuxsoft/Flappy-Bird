@@ -15,7 +15,7 @@ static const char* tittle = "Flappy Bird";
 
 //Scenes
 enum class Scenes {menu, credits, gameplay, exit};
-const Scenes initialScene = Scenes::gameplay;
+const Scenes initialScene = Scenes::menu;
 
 //Buttons
 const int pressButtonKey = MOUSE_LEFT_BUTTON;

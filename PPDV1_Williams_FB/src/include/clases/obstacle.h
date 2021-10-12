@@ -12,6 +12,9 @@ private:
 public:
 	Obstacle();
 
+	Rectangle GetTopRec();
+	Rectangle GetDownRec();
+
 	void UpdateObstacle(float velocity);
 	void DrawObstacle();
 

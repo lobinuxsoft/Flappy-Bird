@@ -14,12 +14,16 @@ private:
 public:
 	Character();
 
+	Vector2 GetPosition();
+	float GetRadius();
+
 	void InputCharacter();
 	void UpdateCharacter();
 	void DrawCharacter();
 
 	void Move();
 	void MovementInputDetection();
+	void ResetCharacterPosition();
 };
 
 #endif

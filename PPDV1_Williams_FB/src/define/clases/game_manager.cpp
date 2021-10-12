@@ -70,7 +70,7 @@ void GameManager::Run()
         case Scenes::gameplay:
 
             gameplay->Input();
-            gameplay->Update();
+            gameplay->Update(sceneManager);
             gameplay->Draw();
 
             break;

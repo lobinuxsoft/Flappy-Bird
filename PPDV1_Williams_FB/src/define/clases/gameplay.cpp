@@ -17,10 +17,12 @@ void Gameplay::Input()
 {
 	character->InputCharacter();
 }
-void Gameplay::Update()
+void Gameplay::Update(SceneManager* sceneManager)
 {
 	character->UpdateCharacter();
 	obstacle->UpdateObstacle(obstacleVelocity);
+
+	EndGameCondition(sceneManager);
 }
 void Gameplay::Draw()
 {
@@ -31,4 +33,20 @@ void Gameplay::Draw()
 	obstacle->DrawObstacle();
 
 	EndDrawing();
+}
+
+bool Gameplay::CollisionCharacterObstacle(Character* character, Obstacle* obstacle)
+{
+	return (CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetTopRec()) 
+		|| CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetDownRec()));
+}
+void Gameplay::EndGameCondition(SceneManager* sceneManager)
+{
+	if (CollisionCharacterObstacle(character, obstacle)) 
+	{
+		obstacle->ResetObstaclePosition();
+		character->ResetCharacterPosition();
+
+		sceneManager->SetCurrentScene(Scenes::menu);
+	}
 }

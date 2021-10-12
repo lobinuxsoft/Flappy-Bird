@@ -2,11 +2,20 @@
 
 Character::Character()
 {
-	position = { 50.0f, static_cast<float>(GetScreenHeight() / 2) };
+	position = { 50.0f, static_cast<float>(GetScreenHeight() / 2.0f) };
 	color = characterColor;
 	radius = 25.0f;
 	moveStatus = Move_Status::still;
 	velocity = 200;
+}
+
+Vector2 Character::GetPosition()
+{
+	return position;
+}
+float Character::GetRadius()
+{
+	return radius;
 }
 
 void Character::InputCharacter() 
@@ -57,4 +66,8 @@ void Character::MovementInputDetection()
 	{
 		moveStatus = Move_Status::still;
 	}
+}
+void Character::ResetCharacterPosition() 
+{
+	position.y = static_cast<float>(GetScreenHeight() / 2.0f);
 }
