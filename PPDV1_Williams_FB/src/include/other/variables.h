@@ -15,7 +15,7 @@ static const char* tittle = "Flappy Bird";
 
 //Scenes
 enum class Scenes {menu, credits, gameplay, exit};
-const Scenes initialScene = Scenes::menu;
+const Scenes initialScene = Scenes::gameplay;
 
 //Buttons
 const int pressButtonKey = MOUSE_LEFT_BUTTON;
@@ -32,5 +32,11 @@ const Color creditsClearBackgroundColor = WHITE;
 
 //Gameplay
 const Color gameClearBackgroundColor = WHITE;
+const Color characterColor = YELLOW;
+
+//Character
+enum class Move_Status {movingUp, movingDown, still};
+const int moveUpKey = KEY_W;
+const int moveDownKey = KEY_S;
 
 #endif
