@@ -159,6 +159,7 @@
     <ClCompile Include="src\define\clases\gameplay.cpp" />
     <ClCompile Include="src\define\clases\game_manager.cpp" />
     <ClCompile Include="src\define\clases\menu.cpp" />
+    <ClCompile Include="src\define\clases\obstacle.cpp" />
     <ClCompile Include="src\define\clases\scene_manager.cpp" />
     <ClCompile Include="src\define\other\main.cpp" />
   </ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="src\include\clases\gameplay.h" />
     <ClInclude Include="src\include\clases\game_manager.h" />
     <ClInclude Include="src\include\clases\menu.h" />
+    <ClInclude Include="src\include\clases\obstacle.h" />
     <ClInclude Include="src\include\clases\scene_manager.h" />
     <ClInclude Include="src\include\other\variables.h" />
   </ItemGroup>

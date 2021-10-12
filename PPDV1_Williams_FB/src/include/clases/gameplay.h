@@ -6,7 +6,7 @@
 class Gameplay 
 {
 private:
-	
+	Character* character;
 public:
 	Gameplay();
 	~Gameplay();
