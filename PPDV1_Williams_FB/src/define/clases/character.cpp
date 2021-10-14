@@ -2,16 +2,16 @@
 
 Character::Character()
 {
-	//position = { 50.0f, static_cast<float>(GetScreenHeight() / 2.0f) };
-	position = { 50.0f, 30};
+	position = { 50.0f, static_cast<float>(GetScreenHeight() / 2.0f) };	
 	color = characterColor;
 	radius = 25.0f;
-	moveStatus = Move_Status::falling;
-	velocity = 200;
+	moveStatus = Move_Status::still;	
 	characterTexture = LoadTexture("assets/player/bluebird-midflap.png");
 	characterTexture.width = radius * 2;
 	characterTexture.height = radius * 2;
-	fallingSpeed = 0.0f;
+	velocity = baseVelocity;
+	fallingSpeed = baseFallingSpeed;
+	jumpingTime = 0.0f;	
 }
 Character::~Character()
 {
@@ -44,32 +44,43 @@ void Character::Move()
 {
 	switch (moveStatus)
 	{
-	case Move_Status::jumping:		
-
-		fallingSpeed = 0;
-
-		break;	
-		case Move_Status::falling:
-
-			if (fallingSpeed < maxFallingSpeed)
-			{
-				fallingSpeed += GetFrameTime() * (maxFallingSpeed / 1.5f);
-			}
+	case Move_Status::jumping:
 			
-			position.y += fallingSpeed * gravity * GetFrameTime();
+		if (jumpingTime < maxTimeJumping) 
+		{
+			position.y -= GetFrameTime() * velocity;
+			velocity -= GetFrameTime() * gravity;
+
+			jumpingTime += GetFrameTime();
+		}
+		else 
+		{
+			fallingSpeed = baseFallingSpeed;
+			moveStatus = Move_Status::falling;
+		}
 
 		break;
-	}
+	case Move_Status::falling:
+
+		fallingSpeed += GetFrameTime() * fallingMultipliyer;
+
+		position.y += fallingSpeed * gravity * GetFrameTime();
+			
+		break;
+	case Move_Status::still:
+
+		position.y += 0;
+
+		break;
+	}	
 }
 void Character::MovementInputDetection() 
 {
 	if (IsKeyPressed(jumpKey))
 	{
 		moveStatus = Move_Status::jumping;
-	}	
-	else
-	{
-		moveStatus = Move_Status::falling;
+		jumpingTime = 0.0f;	
+		velocity = baseVelocity;
 	}
 }
 void Character::ResetCharacterPosition() 

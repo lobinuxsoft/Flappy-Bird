@@ -13,6 +13,7 @@ private:
 	float radius;
 	float velocity;
 	float fallingSpeed;
+	float jumpingTime;	
 public:
 	Character();
 	~Character();

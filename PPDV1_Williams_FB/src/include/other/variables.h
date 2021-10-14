@@ -36,11 +36,14 @@ const short creditsFontSize = 25;
 const Color gameClearBackgroundColor = WHITE;
 
 //Character
-enum class Move_Status {jumping, falling};
+enum class Move_Status {jumping, falling, still};
 const int jumpKey = KEY_SPACE;
 const Color characterColor = WHITE;
-const float maxFallingSpeed = 30.0f;
-const float gravity = 9.8f;
+const float baseFallingSpeed = 7.5f;
+const float gravity = 20.5f;
+const float maxTimeJumping = 0.25f;
+const short fallingMultipliyer = 20;
+const short baseVelocity = 450;
 
 //Obstacle 
 const Color obstacleColor = BLUE;

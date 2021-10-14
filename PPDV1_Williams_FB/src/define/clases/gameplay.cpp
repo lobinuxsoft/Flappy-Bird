@@ -57,7 +57,7 @@ bool Gameplay::CollisionCharacterObstacle(Character* character, Obstacle* obstac
 }
 void Gameplay::EndGameCondition(SceneManager* sceneManager)
 {
-	if (CollisionCharacterObstacle(character, obstacle)) 
+	if (CollisionCharacterObstacle(character, obstacle))
 	{
 		obstacle->ResetObstaclePosition();
 		character->ResetCharacterPosition();
