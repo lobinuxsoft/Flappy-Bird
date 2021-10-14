@@ -2,8 +2,8 @@
 
 Obstacle::Obstacle()
 {
-	topRec = {static_cast<float>(GetScreenWidth() - 100), 0, 50, 150};
-	downRec = { static_cast<float>(GetScreenWidth() - 100), 220, 50, 230 };
+	topRec = {static_cast<float>(GetScreenWidth() - 50), 0, 50, 150};
+	downRec = { static_cast<float>(GetScreenWidth() - 50), 320, 50, 230 };
 	color = obstacleColor;
 }
 

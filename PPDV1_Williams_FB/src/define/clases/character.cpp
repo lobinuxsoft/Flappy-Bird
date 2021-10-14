@@ -20,6 +20,7 @@ Character::Character()
 	fallingSpeed = baseFallingSpeed;
 	jumpingTime = 0.0f;	
 	currentTextureTime = 0.0f;
+	rotation = 0.0f;
 }
 Character::~Character()
 {
@@ -48,22 +49,30 @@ void Character::UpdateCharacter()
 }
 void Character::DrawCharacter()
 {		
+
+#if _DEBUG
+	DrawCircleLines(position.x, position.y, radius, BLACK);
+#endif	
+
 	switch (textureShown) 
 	{
 	case Texture_Shown::down:
-
-		DrawTexture(characterTextureDown, static_cast<int>(position.x) - radius, static_cast<int>(position.y) - radius, color);
 		
+		DrawTexturePro(characterTextureDown, { 0, 0, static_cast<float>(characterTextureDown.width), static_cast<float>(characterTextureDown.height)},
+			{ position.x , position.y, static_cast<float>(characterTextureDown.width), static_cast<float>(characterTextureDown.height) }, 
+			{ radius, radius }, rotation, color);		
 		break;
 	case Texture_Shown::mid:
 
-		DrawTexture(characterTextureMid, static_cast<int>(position.x) - radius, static_cast<int>(position.y) - radius, color);
-		
+		DrawTexturePro(characterTextureMid, { 0, 0, static_cast<float>(characterTextureDown.width), static_cast<float>(characterTextureDown.height) },
+			{ position.x, position.y, static_cast<float>(characterTextureDown.width), static_cast<float>(characterTextureDown.height) },
+			{ radius, radius }, rotation, color);		
 		break;
 	case Texture_Shown::up:
 		
-		DrawTexture(characterTextureUp, static_cast<int>(position.x) - radius, static_cast<int>(position.y) - radius, color);
-
+		DrawTexturePro(characterTextureUp, { 0, 0, static_cast<float>(characterTextureDown.width), static_cast<float>(characterTextureDown.height) },
+			{ position.x, position.y, static_cast<float>(characterTextureDown.width), static_cast<float>(characterTextureDown.height) },
+			{ radius, radius}, rotation, color);		
 		break;
 	}		
 }
@@ -78,8 +87,7 @@ void Character::Move()
 		{
 			position.y -= GetFrameTime() * velocity;
 			velocity -= GetFrameTime() * gravity;
-
-			jumpingTime += GetFrameTime();
+			jumpingTime += GetFrameTime();			
 		}
 		else 
 		{
@@ -93,11 +101,17 @@ void Character::Move()
 		fallingSpeed += GetFrameTime() * fallingMultipliyer;
 
 		position.y += fallingSpeed * gravity * GetFrameTime();
+
+		if (rotation <= 180) 
+		{ 
+			rotation += GetFrameTime() * 90;
+		}
 			
 		break;
 	case Move_Status::still:
 
 		position.y += 0;
+		rotation = 0;
 
 		break;
 	}	
@@ -105,10 +119,11 @@ void Character::Move()
 void Character::MovementInputDetection() 
 {
 	if (IsKeyPressed(jumpKey))
-	{
+	{		
 		moveStatus = Move_Status::jumping;
 		jumpingTime = 0.0f;	
-		velocity = baseVelocity;
+		velocity = baseVelocity;		
+		rotation = -35.0f;
 	}
 }
 void Character::ResetCharacterPosition() 

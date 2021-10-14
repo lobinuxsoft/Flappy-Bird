@@ -19,6 +19,7 @@ private:
 	float fallingSpeed;
 	float jumpingTime;	
 	float currentTextureTime;
+	float rotation;
 public:
 	Character();
 	~Character();
