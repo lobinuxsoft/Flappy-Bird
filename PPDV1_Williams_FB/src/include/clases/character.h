@@ -9,11 +9,16 @@ private:
 	Vector2 position;
 	Color color;
 	Move_Status moveStatus;
-	Texture2D characterTexture;
+	Texture_Shown textureShown;
+	Texture2D characterTextureDown;
+	Texture2D characterTextureMid;
+	Texture2D characterTextureUp;
+
 	float radius;
 	float velocity;
 	float fallingSpeed;
 	float jumpingTime;	
+	float currentTextureTime;
 public:
 	Character();
 	~Character();
@@ -28,6 +33,8 @@ public:
 	void Move();
 	void MovementInputDetection();
 	void ResetCharacterPosition();
+	void AnimationManager();
+	void NextTexture();
 };
 
 #endif
