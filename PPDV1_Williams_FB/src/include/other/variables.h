@@ -26,6 +26,7 @@ const Color buttonColor = BLACK;
 //Menu
 const short maxButtonsMenu = 3;
 const Color menuClearBackgroundColor = WHITE;
+static const char* version = "V0.2";
 
 //Credits
 const Color creditsClearBackgroundColor = WHITE;

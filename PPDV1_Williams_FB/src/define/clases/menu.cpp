@@ -33,7 +33,7 @@ void Menu::Draw()
 	creditsButton->DrawButton();
 	exitButton->DrawButton();
 
-	DrawText("V0.1", GetScreenWidth() - 100, GetScreenHeight() - 50, creditsFontSize + 10, creditsColor);
+	DrawText(version, GetScreenWidth() - 100, GetScreenHeight() - 50, creditsFontSize + 10, creditsColor);
 
 	EndDrawing();
 }
