@@ -35,7 +35,8 @@ public:
 
 	bool CollisionCharacterObstacle(Character* character, Obstacle* obstacle);
 	void EndGameCondition(SceneManager* sceneManager);
-	
+	void ResetGame();
+
 	void LoadTextures();
 	void ResizeTextures();
 	void UnloadTextures();

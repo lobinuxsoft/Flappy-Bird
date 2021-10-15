@@ -6,7 +6,7 @@ Character::Character()
 	color = characterColor;
 	radius = 25.0f;
 	moveStatus = Move_Status::still;	
-	textureShown = Texture_Shown::down;
+	textureShown = Texture_Shown::mid;
 	characterTextureDown = LoadTexture("assets/player/bluebird-downflap.png");
 	characterTextureDown.width = radius * 2;
 	characterTextureDown.height = radius * 2;
@@ -98,20 +98,21 @@ void Character::Move()
 		break;
 	case Move_Status::falling:
 
-		fallingSpeed += GetFrameTime() * fallingMultipliyer;
+		if (fallingSpeed < maxFallingSpeed) 
+		{
+			fallingSpeed += GetFrameTime() * fallingMultipliyer;
+		}		
 
 		position.y += fallingSpeed * gravity * GetFrameTime();
 
-		if (rotation <= 180) 
+		if (rotation <= maxFallingRotation) 
 		{ 
-			rotation += GetFrameTime() * 90;
-		}
+			rotation += GetFrameTime() * fallingRotationMultiplyer;
+		}		
 			
 		break;
 	case Move_Status::still:
-
-		position.y += 0;
-		rotation = 0;
+				
 
 		break;
 	}	
@@ -126,20 +127,27 @@ void Character::MovementInputDetection()
 		rotation = -35.0f;
 	}
 }
-void Character::ResetCharacterPosition() 
+void Character::ResetCharacter() 
 {
 	position.y = static_cast<float>(GetScreenHeight() / 2.0f);
+	moveStatus = Move_Status::still;
+	textureShown = Texture_Shown::mid;
+	currentTextureTime = 0.0f;
+	rotation = 0;
 }
 void Character::AnimationManager()
 {
-	currentTextureTime += GetFrameTime();
-
-	if (currentTextureTime >= changeAnimationTime)
+	if (moveStatus != Move_Status::still) 
 	{
-		NextTexture();
+		currentTextureTime += GetFrameTime();
 
-		currentTextureTime = 0.0f;
-	}
+		if (currentTextureTime >= changeAnimationTime)
+		{
+			NextTexture();
+
+			currentTextureTime = 0.0f;
+		}
+	}	
 }
 void Character::NextTexture()
 {
@@ -158,4 +166,8 @@ void Character::NextTexture()
 		textureShown = Texture_Shown::down;
 		break;
 	}
+}
+bool Character::PlayerTouchesDownBorder() 
+{
+	return position.y + radius >= GetScreenHeight();
 }

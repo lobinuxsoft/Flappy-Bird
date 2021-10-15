@@ -33,9 +33,10 @@ public:
 
 	void Move();
 	void MovementInputDetection();
-	void ResetCharacterPosition();
+	void ResetCharacter();
 	void AnimationManager();
 	void NextTexture();
+	bool PlayerTouchesDownBorder();
 };
 
 #endif

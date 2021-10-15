@@ -59,11 +59,20 @@ void Gameplay::EndGameCondition(SceneManager* sceneManager)
 {
 	if (CollisionCharacterObstacle(character, obstacle))
 	{
-		obstacle->ResetObstaclePosition();
-		character->ResetCharacterPosition();
+		ResetGame();
 
 		sceneManager->SetCurrentScene(Scenes::menu);
 	}
+
+	if (character->PlayerTouchesDownBorder()) 
+	{
+		ResetGame();
+	}
+}
+void Gameplay::ResetGame()
+{
+	obstacle->ResetObstaclePosition();
+	character->ResetCharacter();
 }
 
 void Gameplay::LoadTextures() 

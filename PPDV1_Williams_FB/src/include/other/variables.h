@@ -41,11 +41,14 @@ enum class Texture_Shown {down, mid, up};
 const int jumpKey = KEY_SPACE;
 const Color characterColor = WHITE;
 const float baseFallingSpeed = 7.5f;
+const float maxFallingSpeed = 50.0f;
 const float gravity = 20.5f;
 const float maxTimeJumping = 0.25f;
 const short fallingMultipliyer = 20;
 const short baseVelocity = 450;
 const float changeAnimationTime = 0.2f;
+const short maxFallingRotation = 80;
+const short fallingRotationMultiplyer = 120;
 
 //Obstacle 
 const Color obstacleColor = BLUE;
