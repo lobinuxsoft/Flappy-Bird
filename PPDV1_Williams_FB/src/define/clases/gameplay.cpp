@@ -4,7 +4,7 @@ namespace FlappyBird
 {
 	Gameplay::Gameplay()
 	{
-		character = new Character();
+		character = new Character( "P1", {50.0f, static_cast<float>(GetScreenHeight() / 2.0f)});
 		obstacle = new Obstacle();
 
 		obstacleVelocity = baseObstacleVelocity;
@@ -28,7 +28,7 @@ namespace FlappyBird
 
 	void Gameplay::Input()
 	{
-		character->InputCharacter();
+		character->InputCharacter(IsKeyPressed(jumpKey1));
 	}
 	void Gameplay::Update(SceneManager* sceneManager)
 	{

@@ -2,9 +2,10 @@
 
 namespace FlappyBird 
 {
-	Character::Character()
+	Character::Character(string playerID ,Vector2 position)
 	{
-		position = { 50.0f, static_cast<float>(GetScreenHeight() / 2.0f) };
+		this->playerID = playerID;
+		this->position = position;//{ 50.0f, static_cast<float>(GetScreenHeight() / 2.0f) };
 		color = characterColor;
 		radius = 25.0f;
 		moveStatus = Move_Status::still;
@@ -40,9 +41,9 @@ namespace FlappyBird
 		return radius;
 	}
 
-	void Character::InputCharacter()
+	void Character::InputCharacter(bool isPress)
 	{
-		MovementInputDetection();
+		MovementInputDetection(isPress);
 	}
 	void Character::UpdateCharacter()
 	{
@@ -55,6 +56,8 @@ namespace FlappyBird
 #if _DEBUG
 		DrawCircle(position.x, position.y, radius, BLACK);
 #endif	
+
+		DrawText(playerID.c_str(), position.x, position.y - (radius + 20), 20, BLACK);
 
 		switch (textureShown) //DrawTexturePro es medio dificil de entender como funciona no te recomiendo que lo toques mucho
 		{
@@ -118,9 +121,9 @@ namespace FlappyBird
 			break;
 		}
 	}
-	void Character::MovementInputDetection() //Si se toca la tecla de salto prepara todo para saltar
+	void Character::MovementInputDetection(bool isPress) //Si se toca la tecla de salto prepara todo para saltar
 	{
-		if (IsKeyPressed(jumpKey))
+		if (isPress)
 		{
 			moveStatus = Move_Status::jumping;
 			jumpingTime = 0.0f;

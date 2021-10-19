@@ -4,6 +4,7 @@
 #include "menu.h"
 #include "credits.h"
 #include "gameplay.h"
+#include "gameplay_vs.h"
 
 namespace FlappyBird 
 {
@@ -14,6 +15,7 @@ namespace FlappyBird
 		Menu* menu;
 		Credits* credits;
 		Gameplay* gameplay;
+		GameplayVs* gameplayVs;
 
 		Scenes menuInputScenes[maxButtonsMenu];
 

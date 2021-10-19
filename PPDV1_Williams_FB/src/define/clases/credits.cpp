@@ -27,8 +27,9 @@ namespace FlappyBird
 
 		goMenuButton->DrawButton();
 
-		DrawText("GAME DEVELOPED BY WILLIAMS FACUNDO", GetScreenWidth() / 2 - 240, GetScreenHeight() / 2 - 50, creditsFontSize, creditsColor);
-		DrawText(version, GetScreenWidth() - 100, GetScreenHeight() - 50, creditsFontSize + 10, creditsColor);
+		DrawText("GAME DEVELOPED BY WILLIAMS FACUNDO", GetScreenWidth() / 2 - 240, GetScreenHeight() / 2 - 100, creditsFontSize, creditsColor);
+		DrawText("Assistant programmer MATIAS GALARZA", GetScreenWidth() / 2 - 240, GetScreenHeight() / 2 - 50, creditsFontSize, creditsColor);
+		DrawText(version, GetScreenWidth() - 100, GetScreenHeight() - 100, creditsFontSize + 10, creditsColor);
 
 		EndDrawing();
 	}

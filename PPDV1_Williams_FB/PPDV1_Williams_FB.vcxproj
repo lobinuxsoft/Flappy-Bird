@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -165,6 +165,7 @@ XCOPY "$(SolutionDir)assets" "$(TargetDir)assets" /e /h /y /s</Command>
     <ClCompile Include="src\define\clases\character.cpp" />
     <ClCompile Include="src\define\clases\credits.cpp" />
     <ClCompile Include="src\define\clases\gameplay.cpp" />
+    <ClCompile Include="src\define\clases\gameplay_vs.cpp" />
     <ClCompile Include="src\define\clases\game_manager.cpp" />
     <ClCompile Include="src\define\clases\menu.cpp" />
     <ClCompile Include="src\define\clases\obstacle.cpp" />
@@ -176,6 +177,7 @@ XCOPY "$(SolutionDir)assets" "$(TargetDir)assets" /e /h /y /s</Command>
     <ClInclude Include="src\include\clases\character.h" />
     <ClInclude Include="src\include\clases\credits.h" />
     <ClInclude Include="src\include\clases\gameplay.h" />
+    <ClInclude Include="src\include\clases\gameplay_vs.h" />
     <ClInclude Include="src\include\clases\game_manager.h" />
     <ClInclude Include="src\include\clases\menu.h" />
     <ClInclude Include="src\include\clases\obstacle.h" />

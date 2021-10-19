@@ -9,6 +9,7 @@ namespace FlappyBird
 	{
 	private:
 		Button* playButton;
+		Button* playerVSButton;
 		Button* creditsButton;
 		Button* exitButton;
 	public:
