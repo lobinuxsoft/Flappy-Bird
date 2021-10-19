@@ -1,6 +1,7 @@
 # Flappy Bird Game
 
 _Created By **Williams Facundo** for college._
+_Assistant programmer [**Matias Galarza**](https://www.linkedin.com/in/lobinux/)
 
 ### Image
 
