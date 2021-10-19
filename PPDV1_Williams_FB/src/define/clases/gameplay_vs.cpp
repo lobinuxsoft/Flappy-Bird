@@ -7,7 +7,6 @@ namespace FlappyBird
 		player1 = new Character("P1", { 50.0f, static_cast<float>(GetScreenHeight() / 2.0f) });
 		player2 = new Character( "P2", { 100.0f, static_cast<float>(GetScreenHeight() / 2.0f) });
 		obstacle = new Obstacle();
-
 		obstacleVelocity = baseObstacleVelocity;
 
 		LoadTextures();
@@ -19,6 +18,7 @@ namespace FlappyBird
 		scrollingMidTwo = 0.0f;
 		scrollingFore = 0.0f;
 	}
+
 	GameplayVs::~GameplayVs()
 	{
 		delete player1;
@@ -30,19 +30,27 @@ namespace FlappyBird
 
 	void GameplayVs::Input()
 	{
-		player1->InputCharacter(IsKeyPressed(jumpKey1));
-		player2->InputCharacter(IsKeyPressed(jumpKey2));
+		if (matchInProcess)
+		{
+			player1->InputCharacter(IsKeyPressed(jumpKey1));
+			player2->InputCharacter(IsKeyPressed(jumpKey2));
+		}
 	}
+
 	void GameplayVs::Update(SceneManager* sceneManager)
 	{
-		player1->UpdateCharacter();
-		player2->UpdateCharacter();
-		obstacle->UpdateObstacle(obstacleVelocity);
+		if (matchInProcess)
+		{
+			player1->UpdateCharacter();
+			player2->UpdateCharacter();
+			obstacle->UpdateObstacle(obstacleVelocity);
+			BackgroundTexturesParallax();
+		}
 
 		EndGameCondition(sceneManager);
 
-		BackgroundTexturesParallax();
 	}
+
 	void GameplayVs::Draw()
 	{
 		BeginDrawing();
@@ -55,6 +63,7 @@ namespace FlappyBird
 		obstacle->DrawObstacle();
 
 		DrawInputText();
+		DrawPlayerLives();
 
 		EndDrawing();
 	}
@@ -64,32 +73,41 @@ namespace FlappyBird
 		return (CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetTopRec())
 			|| CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetDownRec()));
 	}
+
 	void GameplayVs::EndGameCondition(SceneManager* sceneManager) //Las dos condiciones de derrota son la colision de los objetos y cuando el pajaro toca el borde
 	{
-		if (CollisionCharacterObstacle(player1, obstacle))
+		if (matchInProcess)
 		{
-			ResetGame();
+			if (CollisionCharacterObstacle(player1, obstacle) || player1->PlayerTouchesDownBorder())
+			{
+				player1Lives--;
+				ResetGame();
+			}
 
-			sceneManager->SetCurrentScene(Scenes::menu);
+			if (CollisionCharacterObstacle(player2, obstacle) || player2->PlayerTouchesDownBorder())
+			{
+				player2Lives--;
+				ResetGame();
+			}
+
+			if (player1Lives <= 0 || player2Lives <= 0) matchInProcess = false;
+			
 		}
-
-		if (player1->PlayerTouchesDownBorder())
+		else
 		{
-			ResetGame();
-		}
+			if (IsKeyPressed(KEY_ENTER))
+			{
+				ResetGame();
 
-		if (CollisionCharacterObstacle(player2, obstacle))
-		{
-			ResetGame();
+				sceneManager->SetCurrentScene(Scenes::menu);
 
-			sceneManager->SetCurrentScene(Scenes::menu);
-		}
-
-		if (player2->PlayerTouchesDownBorder())
-		{
-			ResetGame();
+				player1Lives = maxLives;
+				player2Lives = maxLives;
+				matchInProcess = true;
+			}
 		}
 	}
+
 	void GameplayVs::ResetGame() //Resetea las variables del pajaro y el obstaculo
 	{
 		obstacle->ResetObstaclePosition();
@@ -155,7 +173,29 @@ namespace FlappyBird
 	}
 	void GameplayVs::DrawInputText()
 	{
-		DrawText("P1 press SPACE BAR to jump", 10, GetScreenHeight() - 45, 20, BLUE);
-		DrawText("P2 press ARROW KEY UP to jump", 10, GetScreenHeight() - 20, 20, RED);
+		if (matchInProcess)
+		{
+			DrawText("P1 press SPACE BAR to jump", 10, GetScreenHeight() - 45, 20, DARKBLUE);
+			DrawText("P2 press ARROW KEY UP to jump", 10, GetScreenHeight() - 20, 20, RED);
+		}
+		else
+		{
+			DrawText("Go to Main menu press ENTER", GetScreenWidth()/2 - (MeasureText("Go to Main menu press ENTER", 20)/2), GetScreenHeight()/2, 20, BLACK);
+
+			if (player1Lives > player2Lives)
+			{
+				DrawText("P1 Win the match", GetScreenWidth() / 2 - (MeasureText("P1 Win the match", 40)/2), (GetScreenHeight() / 2) - 40, 40, DARKBLUE);
+			}
+			else
+			{
+				DrawText("P2 Win the match", GetScreenWidth() / 2 - (MeasureText("P1 Win the match", 40)/2), (GetScreenHeight() / 2) - 40, 40, RED);
+			}
+		}
+	}
+
+	void GameplayVs::DrawPlayerLives()
+	{
+		DrawText(TextFormat("P1 lives: %02i", player1Lives), 10, 10, 20, DARKBLUE);
+		DrawText(TextFormat("P2 lives: %02i", player2Lives), GetScreenWidth() - MeasureText(TextFormat("P2 lives: %02i", player2Lives), 20) - 10, 10, 20, RED);
 	}
 }

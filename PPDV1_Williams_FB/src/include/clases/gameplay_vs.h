@@ -10,6 +10,12 @@ namespace FlappyBird
 	class GameplayVs
 	{
 	private:
+		const int maxLives = 3;
+
+		bool matchInProcess = true;
+		int player1Lives = maxLives;
+		int player2Lives = maxLives;
+
 		Character* player1;
 		Character* player2;
 		Obstacle* obstacle;
@@ -46,6 +52,7 @@ namespace FlappyBird
 		void DrawBackgroundTextures();
 		void BackgroundTexturesParallax();
 		void DrawInputText();
+		void DrawPlayerLives();
 	};
 }
 
