@@ -10,7 +10,8 @@ namespace FlappyBird
 	class GameplayVs
 	{
 	private:
-		Character* character;
+		Character* player1;
+		Character* player2;
 		Obstacle* obstacle;
 
 		float obstacleVelocity;
@@ -44,6 +45,7 @@ namespace FlappyBird
 		void UnloadTextures();
 		void DrawBackgroundTextures();
 		void BackgroundTexturesParallax();
+		void DrawInputText();
 	};
 }
 

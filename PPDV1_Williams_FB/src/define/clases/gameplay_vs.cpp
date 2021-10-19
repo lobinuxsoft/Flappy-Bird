@@ -4,7 +4,8 @@ namespace FlappyBird
 {
 	GameplayVs::GameplayVs()
 	{
-		character = new Character();
+		player1 = new Character("P1", { 50.0f, static_cast<float>(GetScreenHeight() / 2.0f) });
+		player2 = new Character( "P2", { 100.0f, static_cast<float>(GetScreenHeight() / 2.0f) });
 		obstacle = new Obstacle();
 
 		obstacleVelocity = baseObstacleVelocity;
@@ -20,7 +21,8 @@ namespace FlappyBird
 	}
 	GameplayVs::~GameplayVs()
 	{
-		delete character;
+		delete player1;
+		delete player2;
 		delete obstacle;
 
 		UnloadTextures();
@@ -28,11 +30,13 @@ namespace FlappyBird
 
 	void GameplayVs::Input()
 	{
-		character->InputCharacter();
+		player1->InputCharacter(IsKeyPressed(jumpKey1));
+		player2->InputCharacter(IsKeyPressed(jumpKey2));
 	}
 	void GameplayVs::Update(SceneManager* sceneManager)
 	{
-		character->UpdateCharacter();
+		player1->UpdateCharacter();
+		player2->UpdateCharacter();
 		obstacle->UpdateObstacle(obstacleVelocity);
 
 		EndGameCondition(sceneManager);
@@ -46,8 +50,11 @@ namespace FlappyBird
 
 		DrawBackgroundTextures();
 
-		character->DrawCharacter();
+		player1->DrawCharacter();
+		player2->DrawCharacter();
 		obstacle->DrawObstacle();
+
+		DrawInputText();
 
 		EndDrawing();
 	}
@@ -59,14 +66,26 @@ namespace FlappyBird
 	}
 	void GameplayVs::EndGameCondition(SceneManager* sceneManager) //Las dos condiciones de derrota son la colision de los objetos y cuando el pajaro toca el borde
 	{
-		if (CollisionCharacterObstacle(character, obstacle))
+		if (CollisionCharacterObstacle(player1, obstacle))
 		{
 			ResetGame();
 
 			sceneManager->SetCurrentScene(Scenes::menu);
 		}
 
-		if (character->PlayerTouchesDownBorder())
+		if (player1->PlayerTouchesDownBorder())
+		{
+			ResetGame();
+		}
+
+		if (CollisionCharacterObstacle(player2, obstacle))
+		{
+			ResetGame();
+
+			sceneManager->SetCurrentScene(Scenes::menu);
+		}
+
+		if (player2->PlayerTouchesDownBorder())
 		{
 			ResetGame();
 		}
@@ -74,7 +93,8 @@ namespace FlappyBird
 	void GameplayVs::ResetGame() //Resetea las variables del pajaro y el obstaculo
 	{
 		obstacle->ResetObstaclePosition();
-		character->ResetCharacter();
+		player1->ResetCharacter();
+		player2->ResetCharacter();
 	}
 
 	void GameplayVs::LoadTextures()
@@ -132,5 +152,10 @@ namespace FlappyBird
 		if (scrollingMidOne <= -midgroundCloudsTwo.width * 2) { scrollingMidOne = 0; }
 		if (scrollingMidTwo <= -midgroundCloudsOne.width * 2) { scrollingMidTwo = 0; }
 		if (scrollingFore <= -foregroundLonelyCloud.width * 2) { scrollingFore = 0; }
+	}
+	void GameplayVs::DrawInputText()
+	{
+		DrawText("P1 press SPACE BAR to jump", 10, GetScreenHeight() - 45, 20, BLUE);
+		DrawText("P2 press ARROW KEY UP to jump", 10, GetScreenHeight() - 20, 20, RED);
 	}
 }

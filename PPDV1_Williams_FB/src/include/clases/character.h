@@ -8,6 +8,7 @@ namespace FlappyBird
 	class Character
 	{
 	private:
+		string playerID;
 		Vector2 position;
 		Color color;
 		Move_Status moveStatus;
@@ -23,18 +24,18 @@ namespace FlappyBird
 		float currentTextureTime;
 		float rotation;
 	public:
-		Character();
+		Character(string playerID,Vector2 position);
 		~Character();
 
 		Vector2 GetPosition();
 		float GetRadius();
 
-		void InputCharacter();
+		void InputCharacter(bool isPress);
 		void UpdateCharacter();
 		void DrawCharacter();
 
 		void Move();
-		void MovementInputDetection();
+		void MovementInputDetection(bool isPress);
 		void ResetCharacter();
 		void AnimationManager();
 		void NextTexture();

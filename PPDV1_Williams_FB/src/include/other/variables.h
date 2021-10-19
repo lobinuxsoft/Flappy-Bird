@@ -41,7 +41,8 @@ namespace FlappyBird
 	//Character
 	enum class Move_Status { jumping, falling, still };
 	enum class Texture_Shown { down, mid, up };
-	const int jumpKey = KEY_SPACE;
+	const int jumpKey1 = KEY_SPACE;
+	const int jumpKey2 = KEY_UP;
 	const Color characterColor = WHITE;
 	const float baseFallingSpeed = 7.5f;
 	const float maxFallingSpeed = 50.0f;
