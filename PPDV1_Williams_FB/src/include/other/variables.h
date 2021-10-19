@@ -16,7 +16,7 @@ namespace FlappyBird
 	static const char* tittle = "Flappy Bird";
 
 	//Scenes
-	enum class Scenes { menu, credits, gameplay, exit };
+	enum class Scenes { menu, credits, gameplay, gameplayVS, exit };
 	const Scenes initialScene = Scenes::menu;
 
 	//Buttons
@@ -26,7 +26,7 @@ namespace FlappyBird
 	const Color buttonColor = BLACK;
 
 	//Menu
-	const short maxButtonsMenu = 3;
+	const short maxButtonsMenu = 4;
 	const Color menuClearBackgroundColor = WHITE;
 	static const char* version = "V0.2";
 

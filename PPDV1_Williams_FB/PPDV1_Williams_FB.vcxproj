@@ -165,6 +165,7 @@ XCOPY "$(SolutionDir)assets" "$(TargetDir)assets" /e /h /y /s</Command>
     <ClCompile Include="src\define\clases\character.cpp" />
     <ClCompile Include="src\define\clases\credits.cpp" />
     <ClCompile Include="src\define\clases\gameplay.cpp" />
+    <ClCompile Include="src\define\clases\gameplay_vs.cpp" />
     <ClCompile Include="src\define\clases\game_manager.cpp" />
     <ClCompile Include="src\define\clases\menu.cpp" />
     <ClCompile Include="src\define\clases\obstacle.cpp" />
@@ -176,6 +177,7 @@ XCOPY "$(SolutionDir)assets" "$(TargetDir)assets" /e /h /y /s</Command>
     <ClInclude Include="src\include\clases\character.h" />
     <ClInclude Include="src\include\clases\credits.h" />
     <ClInclude Include="src\include\clases\gameplay.h" />
+    <ClInclude Include="src\include\clases\gameplay_vs.h" />
     <ClInclude Include="src\include\clases\game_manager.h" />
     <ClInclude Include="src\include\clases\menu.h" />
     <ClInclude Include="src\include\clases\obstacle.h" />
