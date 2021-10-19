@@ -5,43 +5,46 @@
 #include "obstacle.h"
 #include "scene_manager.h"
 
-class Gameplay 
+namespace FlappyBird 
 {
-private:
-	Character* character;
-	Obstacle* obstacle;
+	class Gameplay
+	{
+	private:
+		Character* character;
+		Obstacle* obstacle;
 
-	float obstacleVelocity;
+		float obstacleVelocity;
 
-	Texture2D backgroundSky;
-	Texture2D backgroundClouds;
-	Texture2D backgroundMountain;
-	Texture2D midgroundCloudsTwo;
-	Texture2D midgroundCloudsOne;	
-	Texture2D foregroundLonelyCloud;
-	
-	float scrollingBack;
-	float scrollingBackTwo;
-	float scrollingMidOne;
-	float scrollingMidTwo;	
-	float scrollingFore;
-public:
-	Gameplay();
-	~Gameplay();
+		Texture2D backgroundSky;
+		Texture2D backgroundClouds;
+		Texture2D backgroundMountain;
+		Texture2D midgroundCloudsTwo;
+		Texture2D midgroundCloudsOne;
+		Texture2D foregroundLonelyCloud;
 
-	void Input();
-	void Update(SceneManager* sceneManager);
-	void Draw();
+		float scrollingBack;
+		float scrollingBackTwo;
+		float scrollingMidOne;
+		float scrollingMidTwo;
+		float scrollingFore;
+	public:
+		Gameplay();
+		~Gameplay();
 
-	bool CollisionCharacterObstacle(Character* character, Obstacle* obstacle);
-	void EndGameCondition(SceneManager* sceneManager);
-	void ResetGame();
+		void Input();
+		void Update(SceneManager* sceneManager);
+		void Draw();
 
-	void LoadTextures();
-	void ResizeTextures();
-	void UnloadTextures();
-	void DrawBackgroundTextures();
-	void BackgroundTexturesParallax();
-};
+		bool CollisionCharacterObstacle(Character* character, Obstacle* obstacle);
+		void EndGameCondition(SceneManager* sceneManager);
+		void ResetGame();
+
+		void LoadTextures();
+		void ResizeTextures();
+		void UnloadTextures();
+		void DrawBackgroundTextures();
+		void BackgroundTexturesParallax();
+	};
+}
 
 #endif

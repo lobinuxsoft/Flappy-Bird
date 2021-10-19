@@ -1,15 +1,18 @@
 #include "scene_manager.h"
 
-SceneManager::SceneManager() 
+namespace FlappyBird 
 {
-	SetCurrentScene(initialScene);
-}
+	SceneManager::SceneManager()
+	{
+		SetCurrentScene(initialScene);
+	}
 
-void SceneManager::SetCurrentScene(Scenes currentScene)
-{
-	this->currentScene = currentScene;
-}
-Scenes SceneManager::GetCurrentScene() 
-{
-	return currentScene;
+	void SceneManager::SetCurrentScene(Scenes currentScene)
+	{
+		this->currentScene = currentScene;
+	}
+	Scenes SceneManager::GetCurrentScene()
+	{
+		return currentScene;
+	}
 }

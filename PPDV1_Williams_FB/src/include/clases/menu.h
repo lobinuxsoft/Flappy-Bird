@@ -3,19 +3,22 @@
 
 #include "button.h"
 
-class Menu 
+namespace FlappyBird 
 {
-private:
-	Button* playButton;
-	Button* creditsButton;
-	Button* exitButton;
-public:
-	Menu(Rectangle recs[maxButtonsMenu], const char* texts[maxButtonsMenu]);
-	~Menu();
+	class Menu
+	{
+	private:
+		Button* playButton;
+		Button* creditsButton;
+		Button* exitButton;
+	public:
+		Menu(Rectangle recs[maxButtonsMenu], const char* texts[maxButtonsMenu]);
+		~Menu();
 
-	void Input(SceneManager* sceneManager, Scenes scenes[maxButtonsMenu]);
-	void Update();
-	void Draw();
-};
+		void Input(SceneManager* sceneManager, Scenes scenes[maxButtonsMenu]);
+		void Update();
+		void Draw();
+	};
+}
 
 #endif

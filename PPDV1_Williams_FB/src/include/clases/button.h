@@ -3,19 +3,22 @@
 
 #include "scene_manager.h"
 
-class Button 
+namespace FlappyBird 
 {
-private:
-	Rectangle rec;
-	Color color;
-	const char* text;
-public:
-	Button(Rectangle rec, Color color, const char* text);
+	class Button
+	{
+	private:
+		Rectangle rec;
+		Color color;
+		const char* text;
+	public:
+		Button(Rectangle rec, Color color, const char* text);
 
-	bool IsMouseOnButton();
-	bool IsButtonPressed();
-	void DrawButton();
-	void ChangeSceneWhenButtonPressed(SceneManager* sceneManager, Scenes nextScene);
-};
+		bool IsMouseOnButton();
+		bool IsButtonPressed();
+		void DrawButton();
+		void ChangeSceneWhenButtonPressed(SceneManager* sceneManager, Scenes nextScene);
+	};
+}
 
 #endif

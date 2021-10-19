@@ -3,16 +3,19 @@
 
 #include "variables.h"
 
-class SceneManager 
+namespace FlappyBird 
 {
-private:
-	Scenes currentScene;
-public:
-	SceneManager();
+	class SceneManager
+	{
+	private:
+		Scenes currentScene;
+	public:
+		SceneManager();
 
-	void SetCurrentScene(Scenes currentScene);
-	Scenes GetCurrentScene();
-};
+		void SetCurrentScene(Scenes currentScene);
+		Scenes GetCurrentScene();
+	};
+}
 
 #endif
 

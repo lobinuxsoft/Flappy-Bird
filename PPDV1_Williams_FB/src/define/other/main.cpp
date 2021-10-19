@@ -2,7 +2,7 @@
 
 int main() 
 {	
-	GameManager* game = new GameManager();
+	FlappyBird::GameManager* game = new FlappyBird::GameManager();
 
 	game->Run();
 

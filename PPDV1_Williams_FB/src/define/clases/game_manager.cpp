@@ -1,84 +1,87 @@
 #include "game_manager.h"
 
-GameManager::GameManager() 
+namespace FlappyBird 
 {
-	InitWindow(screenWidth, screenHeight, tittle);
-
-	SetTargetFPS(fps);
-
-    Init();
-}
-GameManager::~GameManager() 
-{
-	CloseWindow();
-
-    Deinit();
-}
-
-void GameManager::Init()
-{
-    sceneManager = new SceneManager();
- 
-    Rectangle recs[maxButtonsMenu];
-    recs[0] = { 50, 50, 300, 40 };
-    recs[1] = { 50, 120, 300, 40 };
-    recs[2] = { 50, 190, 300, 40 };
-    
-    const char* texts[maxButtonsMenu];
-    texts[0] = "PLAY";
-    texts[1] = "CREDITS";
-    texts[2] = "EXIT";
-
-    menu = new Menu(recs, texts);
-    
-    menuInputScenes[0] = Scenes::gameplay;
-    menuInputScenes[1] = Scenes::credits;
-    menuInputScenes[2] = Scenes::exit;
-
-    credits = new Credits();
-    gameplay = new Gameplay();
-
-    exit = false;
-}
-void GameManager::Deinit()
-{
-    delete sceneManager;
-    delete menu;
-    delete credits;
-    delete gameplay;
-}
-void GameManager::Run() 
-{
-    while (!WindowShouldClose() && !exit)    // Detect window close button or ESC key
+    GameManager::GameManager()
     {
-        switch (sceneManager->GetCurrentScene()) 
+        InitWindow(screenWidth, screenHeight, tittle);
+
+        SetTargetFPS(fps);
+
+        Init();
+    }
+    GameManager::~GameManager()
+    {
+        CloseWindow();
+
+        Deinit();
+    }
+
+    void GameManager::Init()
+    {
+        sceneManager = new SceneManager();
+
+        Rectangle recs[maxButtonsMenu];
+        recs[0] = { 50, 50, 300, 40 };
+        recs[1] = { 50, 120, 300, 40 };
+        recs[2] = { 50, 190, 300, 40 };
+
+        const char* texts[maxButtonsMenu];
+        texts[0] = "PLAY";
+        texts[1] = "CREDITS";
+        texts[2] = "EXIT";
+
+        menu = new Menu(recs, texts);
+
+        menuInputScenes[0] = Scenes::gameplay;
+        menuInputScenes[1] = Scenes::credits;
+        menuInputScenes[2] = Scenes::exit;
+
+        credits = new Credits();
+        gameplay = new Gameplay();
+
+        exit = false;
+    }
+    void GameManager::Deinit()
+    {
+        delete sceneManager;
+        delete menu;
+        delete credits;
+        delete gameplay;
+    }
+    void GameManager::Run()
+    {
+        while (!WindowShouldClose() && !exit)    // Detect window close button or ESC key
         {
-        case Scenes::menu:
-            
-            menu->Input(sceneManager, menuInputScenes);
-            menu->Update();
-            menu->Draw();
+            switch (sceneManager->GetCurrentScene())
+            {
+            case Scenes::menu:
 
-            break;
-        case Scenes::credits:
+                menu->Input(sceneManager, menuInputScenes);
+                menu->Update();
+                menu->Draw();
 
-            credits->Input(sceneManager);
-            credits->Update();
-            credits->Draw();
+                break;
+            case Scenes::credits:
 
-            break;
-        case Scenes::gameplay:
+                credits->Input(sceneManager);
+                credits->Update();
+                credits->Draw();
 
-            gameplay->Input();
-            gameplay->Update(sceneManager);
-            gameplay->Draw();
+                break;
+            case Scenes::gameplay:
 
-            break;
-        case Scenes::exit:
+                gameplay->Input();
+                gameplay->Update(sceneManager);
+                gameplay->Draw();
 
-            exit = true;
+                break;
+            case Scenes::exit:
 
-            break;
-        }        
-    }    
+                exit = true;
+
+                break;
+            }
+        }
+    }
 }

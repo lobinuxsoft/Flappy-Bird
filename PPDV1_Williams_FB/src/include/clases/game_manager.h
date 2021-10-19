@@ -5,24 +5,27 @@
 #include "credits.h"
 #include "gameplay.h"
 
-class GameManager 
+namespace FlappyBird 
 {
-private:
-	SceneManager* sceneManager;
-	Menu* menu;
-	Credits* credits;
-	Gameplay* gameplay;
+	class GameManager
+	{
+	private:
+		SceneManager* sceneManager;
+		Menu* menu;
+		Credits* credits;
+		Gameplay* gameplay;
 
-	Scenes menuInputScenes[maxButtonsMenu];
+		Scenes menuInputScenes[maxButtonsMenu];
 
-	bool exit;
-public:
-	GameManager();
-	~GameManager();
+		bool exit;
+	public:
+		GameManager();
+		~GameManager();
 
-	void Init();
-	void Deinit();
-	void Run();
-};
+		void Init();
+		void Deinit();
+		void Run();
+	};
+}
 
 #endif

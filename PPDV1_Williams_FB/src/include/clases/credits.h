@@ -3,17 +3,20 @@
 
 #include "button.h"
 
-class Credits
+namespace FlappyBird 
 {
-private:
-	Button* goMenuButton;
-public:
-	Credits();
-	~Credits();
+	class Credits
+	{
+	private:
+		Button* goMenuButton;
+	public:
+		Credits();
+		~Credits();
 
-	void Input(SceneManager* sceneManager);
-	void Update();
-	void Draw();
-};
+		void Input(SceneManager* sceneManager);
+		void Update();
+		void Draw();
+	};
+}
 
 #endif
