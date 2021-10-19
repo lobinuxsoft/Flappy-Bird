@@ -57,7 +57,7 @@ namespace FlappyBird
 		return (CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetTopRec())
 			|| CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetDownRec()));
 	}
-	void Gameplay::EndGameCondition(SceneManager* sceneManager)
+	void Gameplay::EndGameCondition(SceneManager* sceneManager) //Las dos condiciones de derrota son la colision de los objetos y cuando el pajaro toca el borde
 	{
 		if (CollisionCharacterObstacle(character, obstacle))
 		{
@@ -71,7 +71,7 @@ namespace FlappyBird
 			ResetGame();
 		}
 	}
-	void Gameplay::ResetGame()
+	void Gameplay::ResetGame() //Resetea las variables del pajaro y el obstaculo
 	{
 		obstacle->ResetObstaclePosition();
 		character->ResetCharacter();
@@ -86,7 +86,7 @@ namespace FlappyBird
 		backgroundClouds = LoadTexture("assets/background/clouds_bg.png");
 		foregroundLonelyCloud = LoadTexture("assets/background/cloud_lonely.png");
 	}
-	void Gameplay::ResizeTextures()
+	void Gameplay::ResizeTextures() //El fondo azul lo iguala a la pantalla
 	{
 		backgroundSky.width = GetScreenWidth();
 		backgroundSky.height = GetScreenHeight();

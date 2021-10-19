@@ -49,16 +49,16 @@ namespace FlappyBird
 		Move();
 		AnimationManager();
 	}
-	void Character::DrawCharacter()
+	void Character::DrawCharacter() //Switch con las tres texturas del pajaro
 	{
 
 #if _DEBUG
 		DrawCircle(position.x, position.y, radius, BLACK);
 #endif	
 
-		switch (textureShown)
+		switch (textureShown) //DrawTexturePro es medio dificil de entender como funciona no te recomiendo que lo toques mucho
 		{
-		case Texture_Shown::down:
+		case Texture_Shown::down: 
 
 			DrawTexturePro(characterTextureDown, { 0, 0, static_cast<float>(characterTextureDown.width), static_cast<float>(characterTextureDown.height) },
 				{ position.x, position.y, static_cast<float>(characterTextureDown.width), static_cast<float>(characterTextureDown.height) },
@@ -79,19 +79,19 @@ namespace FlappyBird
 		}
 	}
 
-	void Character::Move()
+	void Character::Move() //Esto sería una maquina de estados que depende el estado de lo que hace el pajaro (saltar, caer o estar estático)
 	{
 		switch (moveStatus)
 		{
 		case Move_Status::jumping:
 
-			if (jumpingTime < maxTimeJumping)
+			if (jumpingTime < maxTimeJumping) //Aplica una fuerza para arriba (es negativo por como funciona raylib) y disminuye un poco esa fuerza por cada frame
 			{
 				position.y -= GetFrameTime() * velocity;
 				velocity -= GetFrameTime() * gravity;
 				jumpingTime += GetFrameTime();
 			}
-			else
+			else //Cuando deja de subir cambia el estado para bajar
 			{
 				fallingSpeed = baseFallingSpeed;
 				moveStatus = Move_Status::falling;
@@ -100,25 +100,25 @@ namespace FlappyBird
 			break;
 		case Move_Status::falling:
 
-			if (fallingSpeed < maxFallingSpeed)
+			if (fallingSpeed < maxFallingSpeed) //Aumenta la velocidad de caida hasta cierto maximo
 			{
 				fallingSpeed += GetFrameTime() * fallingMultipliyer;
 			}
 
-			position.y += fallingSpeed * gravity * GetFrameTime();
+			position.y += fallingSpeed * gravity * GetFrameTime(); //Esto es la gravedad
 
-			if (rotation <= maxFallingRotation)
+			if (rotation <= maxFallingRotation) //Cuando esta cayendo rota en el sentido de las agujas del reloj
 			{
 				rotation += GetFrameTime() * fallingRotationMultiplyer;
 			}
 
 			break;
-		case Move_Status::still:
+		case Move_Status::still: //Cuando esta inmobil no hace nada
 
 			break;
 		}
 	}
-	void Character::MovementInputDetection()
+	void Character::MovementInputDetection() //Si se toca la tecla de salto prepara todo para saltar
 	{
 		if (IsKeyPressed(jumpKey))
 		{
@@ -128,7 +128,7 @@ namespace FlappyBird
 			rotation = -35.0f;
 		}
 	}
-	void Character::ResetCharacter()
+	void Character::ResetCharacter() //Resetea los valores necesarios para reiniciar la partida
 	{
 		position.y = static_cast<float>(GetScreenHeight() / 2.0f);
 		moveStatus = Move_Status::still;
@@ -136,7 +136,7 @@ namespace FlappyBird
 		currentTextureTime = 0.0f;
 		rotation = 0;
 	}
-	void Character::AnimationManager()
+	void Character::AnimationManager() //Cambia de animacion cada x cantidad de tiempo solo si no esta quieto
 	{
 		if (moveStatus != Move_Status::still)
 		{
@@ -150,7 +150,7 @@ namespace FlappyBird
 			}
 		}
 	}
-	void Character::NextTexture()
+	void Character::NextTexture() //Pasa a la siguiente textura
 	{
 		switch (textureShown)
 		{
@@ -168,7 +168,7 @@ namespace FlappyBird
 			break;
 		}
 	}
-	bool Character::PlayerTouchesDownBorder()
+	bool Character::PlayerTouchesDownBorder() //Si el pajaro toca el borde de abajo
 	{
 		return position.y + radius >= GetScreenHeight();
 	}

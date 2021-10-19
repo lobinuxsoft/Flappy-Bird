@@ -2,7 +2,7 @@
 
 namespace FlappyBird 
 {
-	Obstacle::Obstacle()
+	Obstacle::Obstacle() //Esta compuesto de dos rectangulos
 	{
 		topRec = { static_cast<float>(GetScreenWidth() - 50), 0, 50, 120 };
 		downRec = { static_cast<float>(GetScreenWidth() - 50), 340, 50, 230 };
@@ -22,18 +22,18 @@ namespace FlappyBird
 	{
 		MoveObstacles(velocity);
 
-		if (IsObstacleOnTheLeft())
+		if (IsObstacleOnTheLeft()) //Resetea la posicion del obstaculo cuando toca el borde
 		{
 			ResetObstaclePosition();
 		}
 	}
-	void Obstacle::DrawObstacle()
+	void Obstacle::DrawObstacle() //Dibuja el obstaculo
 	{
 		DrawRectangleRec(topRec, color);
 		DrawRectangleRec(downRec, color);
 	}
 
-	void Obstacle::ResetObstaclePosition()
+	void Obstacle::ResetObstaclePosition() //Resetea la posicion del obstaculo
 	{
 		topRec.x = static_cast<float>(GetScreenWidth() - 100);
 		downRec.x = static_cast<float>(GetScreenWidth() - 100);
@@ -42,7 +42,7 @@ namespace FlappyBird
 	{
 		return (topRec.x <= 0 || downRec.x <= 0);
 	}
-	void Obstacle::MoveObstacles(float velocity)
+	void Obstacle::MoveObstacles(float velocity) //Mueve el obstaculo hacia la izquierda
 	{
 		topRec.x -= velocity * GetFrameTime();
 		downRec.x -= velocity * GetFrameTime();
