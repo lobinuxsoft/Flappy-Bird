@@ -28,7 +28,7 @@ namespace FlappyBird
 	//Menu
 	const short maxButtonsMenu = 4;
 	const Color menuClearBackgroundColor = WHITE;
-	static const char* version = "V0.2";
+	static const char* version = "V0.3";
 
 	//Credits
 	const Color creditsClearBackgroundColor = WHITE;
