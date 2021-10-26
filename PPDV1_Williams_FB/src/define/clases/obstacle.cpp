@@ -35,12 +35,12 @@ namespace FlappyBird
 
 	void Obstacle::ResetObstaclePosition() //Resetea la posicion del obstaculo
 	{
-		topRec.x = static_cast<float>(GetScreenWidth() - 100);
-		downRec.x = static_cast<float>(GetScreenWidth() - 100);
+		topRec.x = static_cast<float>(GetScreenWidth() + topRec.width);
+		downRec.x = static_cast<float>(GetScreenWidth() + downRec.width);
 	}
 	bool Obstacle::IsObstacleOnTheLeft()
 	{
-		return (topRec.x <= 0 || downRec.x <= 0);
+		return (topRec.x + topRec.width <= 0 || downRec.x + downRec.width <= 0);
 	}
 	void Obstacle::MoveObstacles(float velocity) //Mueve el obstaculo hacia la izquierda
 	{
