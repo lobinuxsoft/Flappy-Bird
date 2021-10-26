@@ -66,7 +66,7 @@ namespace FlappyBird
 			sceneManager->SetCurrentScene(Scenes::menu);
 		}
 
-		if (character->PlayerTouchesDownBorder())
+		if (character->PlayerToucheBorders())
 		{
 			ResetGame();
 		}

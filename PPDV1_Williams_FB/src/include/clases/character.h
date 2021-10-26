@@ -39,7 +39,7 @@ namespace FlappyBird
 		void ResetCharacter();
 		void AnimationManager();
 		void NextTexture();
-		bool PlayerTouchesDownBorder();
+		bool PlayerToucheBorders();
 	};
 }
 
