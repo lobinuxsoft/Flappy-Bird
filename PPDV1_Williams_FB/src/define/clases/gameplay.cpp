@@ -18,6 +18,7 @@ namespace FlappyBird
 		scrollingMidTwo = 0.0f;
 		scrollingFore = 0.0f;
 	}
+
 	Gameplay::~Gameplay()
 	{
 		delete character;
@@ -30,15 +31,19 @@ namespace FlappyBird
 	{
 		character->InputCharacter(IsKeyPressed(jumpKey1));
 	}
+
 	void Gameplay::Update(SceneManager* sceneManager)
 	{
 		character->UpdateCharacter();
 		obstacle->UpdateObstacle(obstacleVelocity);
 
+		if (PassThroughObstacle(character, obstacle)) AddScore();
+
 		EndGameCondition(sceneManager);
 
 		BackgroundTexturesParallax();
 	}
+
 	void Gameplay::Draw()
 	{
 		BeginDrawing();
@@ -49,7 +54,36 @@ namespace FlappyBird
 		character->DrawCharacter();
 		obstacle->DrawObstacle();
 
+		DrawText(TextFormat("Score: %02i   HighScore: %02i", gameScore, gameHighscore), 10, 10, 20, BLACK);
+
+		if(gameOver)
+		{
+			int centerX = GetScreenWidth() / 2;
+			int centerY = GetScreenHeight() / 2;
+
+			DrawText("GAME OVER", centerX - MeasureText("GAME OVER", 60) / 2, centerY - 30, 60, BLACK);
+			DrawText("'ENTER' to retry", centerX - MeasureText("'ENTER' to retry", 20) / 2, centerY + 80, 20, BLACK);
+			DrawText("'Q' to main menu", centerX - MeasureText("'Q' to main menu", 20) / 2, centerY + 130, 20, BLACK);
+		}
+
 		EndDrawing();
+	}
+
+	bool Gameplay::PassThroughObstacle(Character* character, Obstacle* obstacle)
+	{
+		if(!obstacle->GetPassThroughObstacle())
+		{
+			if (CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetMidRec()))
+			{
+				obstacle->SetPassThroughObstacle(true);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		return false;
 	}
 
 	bool Gameplay::CollisionCharacterObstacle(Character* character, Obstacle* obstacle)
@@ -57,22 +91,33 @@ namespace FlappyBird
 		return (CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetTopRec())
 			|| CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetDownRec()));
 	}
+
 	void Gameplay::EndGameCondition(SceneManager* sceneManager) //Las dos condiciones de derrota son la colision de los objetos y cuando el pajaro toca el borde
 	{
-		if (CollisionCharacterObstacle(character, obstacle))
+		if (gameOver)
 		{
-			ResetGame();
+			if (IsKeyPressed(KEY_ENTER))
+			{
+				ResetGame();
+			}
 
-			sceneManager->SetCurrentScene(Scenes::menu);
+			if (IsKeyPressed(KEY_Q))
+			{
+				ResetGame();
+				sceneManager->SetCurrentScene(Scenes::menu);
+			}
 		}
-
-		if (character->PlayerToucheBorders())
+		else
 		{
-			ResetGame();
+			gameOver = CollisionCharacterObstacle(character, obstacle) || character->PlayerToucheBorders();
 		}
 	}
+
 	void Gameplay::ResetGame() //Resetea las variables del pajaro y el obstaculo
 	{
+		gameOver = false;
+		gameScore = 0;
+
 		obstacle->ResetObstaclePosition();
 		character->ResetCharacter();
 	}
@@ -86,11 +131,13 @@ namespace FlappyBird
 		backgroundClouds = LoadTexture("assets/background/clouds_bg.png");
 		foregroundLonelyCloud = LoadTexture("assets/background/cloud_lonely.png");
 	}
+
 	void Gameplay::ResizeTextures() //El fondo azul lo iguala a la pantalla
 	{
 		backgroundSky.width = GetScreenWidth();
 		backgroundSky.height = GetScreenHeight();
 	}
+
 	void Gameplay::UnloadTextures()
 	{
 		UnloadTexture(backgroundSky);
@@ -100,6 +147,7 @@ namespace FlappyBird
 		UnloadTexture(backgroundClouds);
 		UnloadTexture(foregroundLonelyCloud);
 	}
+
 	void Gameplay::DrawBackgroundTextures()
 	{
 		DrawTexture(backgroundSky, 0, 0, texturesColor);
@@ -119,6 +167,7 @@ namespace FlappyBird
 		DrawTextureEx(foregroundLonelyCloud, { scrollingFore, backgroundYPos }, 0.0f, backgroundSize, texturesColor);
 		DrawTextureEx(foregroundLonelyCloud, { foregroundLonelyCloud.width * 2.0f + scrollingFore, backgroundYPos }, 0.0f, backgroundSize, texturesColor);
 	}
+
 	void Gameplay::BackgroundTexturesParallax()
 	{
 		scrollingBack -= 0.1f;
@@ -132,5 +181,12 @@ namespace FlappyBird
 		if (scrollingMidOne <= -midgroundCloudsTwo.width * 2) { scrollingMidOne = 0; }
 		if (scrollingMidTwo <= -midgroundCloudsOne.width * 2) { scrollingMidTwo = 0; }
 		if (scrollingFore <= -foregroundLonelyCloud.width * 2) { scrollingFore = 0; }
+	}
+
+	void Gameplay::AddScore()
+	{
+		gameScore++;
+
+		gameHighscore = gameScore > gameHighscore ? gameScore : gameHighscore;
 	}
 }

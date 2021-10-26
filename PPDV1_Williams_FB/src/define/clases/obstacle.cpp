@@ -9,6 +9,7 @@ namespace FlappyBird
 
 		topRec = Rectangle{ 0,0,0,0 };
 		downRec = Rectangle{ 0,0,0,0 };
+		midRec = Rectangle{ 0,0,0,0 };
 
 		color = obstacleColor;
 	}
@@ -17,9 +18,15 @@ namespace FlappyBird
 	{
 		return topRec;
 	}
+
 	Rectangle Obstacle::GetDownRec()
 	{
 		return downRec;
+	}
+
+	Rectangle Obstacle::GetMidRec()
+	{
+		return midRec;
 	}
 
 	void Obstacle::UpdateObstacle(float velocity)
@@ -32,15 +39,22 @@ namespace FlappyBird
 			RandomYPosition();
 		}
 	}
+
 	void Obstacle::DrawObstacle() //Dibuja el obstaculo
 	{
 		DrawRectangleRec(topRec, color);
 		DrawRectangleRec(downRec, color);
+
+#if _DEBUG
+		DrawRectangleRec(midRec, Fade(GREEN, 0.5f));
+#endif // _DEBUG
+
 	}
 
 	void Obstacle::ResetObstaclePosition() //Resetea la posicion del obstaculo
 	{
 		x = GetScreenWidth() + width;
+		passThroughObstacles = false;
 	}
 
 	bool Obstacle::IsObstacleOnTheLeft()
@@ -73,5 +87,24 @@ namespace FlappyBird
 			width,
 			GetScreenHeight() - y
 		};
+
+		midRec = Rectangle
+		{
+			x + width * 0.35f,
+			y - verticalOffset,
+			width * 0.25f,
+			verticalOffset * 2
+		};
 	}
+
+	bool Obstacle::GetPassThroughObstacle()
+	{
+		return passThroughObstacles;
+	}
+
+	void Obstacle::SetPassThroughObstacle(bool value)
+	{
+		passThroughObstacles = value;
+	}
+
 }
