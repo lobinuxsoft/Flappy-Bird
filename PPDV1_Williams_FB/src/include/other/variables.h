@@ -13,7 +13,9 @@ namespace FlappyBird
 	const int screenWidth = 800;
 	const int screenHeight = 450;
 	const short fps = 60;
-	static const char* tittle = "Flappy Bird";
+	static const string tittle = "ARTIC BIRD xD";
+	const Color tittleColor = BLACK;
+	const short tittleFontSize = 50;
 
 	//Scenes
 	enum class Scenes { menu, credits, gameplay, gameplayVS, exit };
@@ -28,7 +30,7 @@ namespace FlappyBird
 	//Menu
 	const short maxButtonsMenu = 4;
 	const Color menuClearBackgroundColor = WHITE;
-	static const char* version = "V0.3";
+	static const string version = "V0.3";
 
 	//Credits
 	const Color creditsClearBackgroundColor = WHITE;

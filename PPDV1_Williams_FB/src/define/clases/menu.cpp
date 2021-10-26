@@ -116,7 +116,8 @@ namespace FlappyBird
 		creditsButton->DrawButton();
 		exitButton->DrawButton();
 
-		DrawText(version, GetScreenWidth() - 100, GetScreenHeight() - 50, creditsFontSize + 10, creditsColor);
+		DrawText(version.c_str(), GetScreenWidth() - 100, GetScreenHeight() - 50, creditsFontSize, creditsColor);
+		DrawText(tittle.c_str(), GetScreenWidth() - MeasureText(tittle.c_str(), tittleFontSize) - tittleFontSize/2, tittleFontSize, tittleFontSize, tittleColor);
 
 		EndDrawing();
 	}

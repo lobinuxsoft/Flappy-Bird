@@ -4,7 +4,7 @@ namespace FlappyBird
 {
     GameManager::GameManager()
     {
-        InitWindow(screenWidth, screenHeight, tittle);
+        InitWindow(screenWidth, screenHeight, tittle.c_str());
 
         SetTargetFPS(fps);
 
