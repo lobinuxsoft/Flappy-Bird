@@ -45,6 +45,9 @@
     <ClCompile Include="src\class\scenes\gameplay_vs.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\class\game_objects\background_parallax.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\class\scenes\game_manager.h">
@@ -75,6 +78,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\class\scenes\gameplay_vs.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\class\game_objects\background_parallax.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

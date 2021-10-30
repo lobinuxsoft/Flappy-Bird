@@ -1,6 +1,7 @@
 #ifndef gameplay_h
 #define gameplay_h
 
+#include "class/game_objects/background_parallax.h"
 #include "class/game_objects/character.h"
 #include "class/game_objects/obstacle.h"
 #include "scene_manager.h"
@@ -14,23 +15,12 @@ namespace FlappyBird
 		unsigned gameHighscore = 0;
 		bool gameOver = false;
 
+		BackgroundParallax* backgroundParallax;
 		Character* character;
 		Obstacle* obstacle;
 
 		float obstacleVelocity;
 
-		Texture2D backgroundSky;
-		Texture2D backgroundClouds;
-		Texture2D backgroundMountain;
-		Texture2D midgroundCloudsTwo;
-		Texture2D midgroundCloudsOne;
-		Texture2D foregroundLonelyCloud;
-
-		float scrollingBack;
-		float scrollingBackTwo;
-		float scrollingMidOne;
-		float scrollingMidTwo;
-		float scrollingFore;
 	public:
 		Gameplay();
 		~Gameplay();
@@ -43,12 +33,6 @@ namespace FlappyBird
 		bool CollisionCharacterObstacle(Character* character, Obstacle* obstacle);
 		void EndGameCondition(SceneManager* sceneManager);
 		void ResetGame();
-
-		void LoadTextures();
-		void ResizeTextures();
-		void UnloadTextures();
-		void DrawBackgroundTextures();
-		void BackgroundTexturesParallax();
 
 		void AddScore();
 	};

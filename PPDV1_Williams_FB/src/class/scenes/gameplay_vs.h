@@ -1,6 +1,7 @@
 #ifndef gameplay_vs_h
 #define gameplay_vs_h
 
+#include "class/game_objects/background_parallax.h"
 #include "class/game_objects/character.h"
 #include "class/game_objects/obstacle.h"
 #include "scene_manager.h"
@@ -16,24 +17,13 @@ namespace FlappyBird
 		int player1Lives = maxLives;
 		int player2Lives = maxLives;
 
+		BackgroundParallax* backgroundParallax;
 		Character* player1;
 		Character* player2;
 		Obstacle* obstacle;
 
 		float obstacleVelocity;
 
-		Texture2D backgroundSky;
-		Texture2D backgroundClouds;
-		Texture2D backgroundMountain;
-		Texture2D midgroundCloudsTwo;
-		Texture2D midgroundCloudsOne;
-		Texture2D foregroundLonelyCloud;
-
-		float scrollingBack;
-		float scrollingBackTwo;
-		float scrollingMidOne;
-		float scrollingMidTwo;
-		float scrollingFore;
 	public:
 		GameplayVs();
 		~GameplayVs();
@@ -46,11 +36,6 @@ namespace FlappyBird
 		void EndGameCondition(SceneManager* sceneManager);
 		void ResetGame();
 
-		void LoadTextures();
-		void ResizeTextures();
-		void UnloadTextures();
-		void DrawBackgroundTextures();
-		void BackgroundTexturesParallax();
 		void DrawInputText();
 		void DrawPlayerLives();
 	};
