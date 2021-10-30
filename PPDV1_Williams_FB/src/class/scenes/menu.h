@@ -4,6 +4,7 @@
 #include "raylib.h"
 
 #include "class/user_interface/button.h"
+#include "scene_manager.h"
 
 namespace FlappyBird
 {

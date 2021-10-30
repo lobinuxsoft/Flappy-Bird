@@ -2,7 +2,9 @@
 #define button_h
 
 #include "raylib.h"
-#include "class/scenes/game_manager.h"
+
+#include "class/variables.h"
+#include "class/scenes/scene_manager.h"
 
 namespace FlappyBird 
 {
