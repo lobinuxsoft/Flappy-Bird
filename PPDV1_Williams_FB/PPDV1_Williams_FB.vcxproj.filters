@@ -15,66 +15,72 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\define\other\main.cpp">
+    <ClCompile Include="src\class\main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\game_manager.cpp">
+    <ClCompile Include="src\class\scenes\game_manager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\scene_manager.cpp">
+    <ClCompile Include="src\class\scenes\scene_manager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\menu.cpp">
+    <ClCompile Include="src\class\scenes\menu.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\button.cpp">
+    <ClCompile Include="src\class\user_interface\button.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\credits.cpp">
+    <ClCompile Include="src\class\scenes\credits.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\gameplay.cpp">
+    <ClCompile Include="src\class\scenes\gameplay.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\character.cpp">
+    <ClCompile Include="src\class\game_objects\character.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\obstacle.cpp">
+    <ClCompile Include="src\class\game_objects\obstacle.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\define\clases\gameplay_vs.cpp">
+    <ClCompile Include="src\class\scenes\gameplay_vs.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\class\game_objects\background_parallax.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\include\clases\game_manager.h">
+    <ClInclude Include="src\class\scenes\game_manager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\other\variables.h">
+    <ClInclude Include="src\class\variables.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\clases\scene_manager.h">
+    <ClInclude Include="src\class\scenes\scene_manager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\clases\menu.h">
+    <ClInclude Include="src\class\scenes\menu.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\clases\button.h">
+    <ClInclude Include="src\class\user_interface\button.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\clases\credits.h">
+    <ClInclude Include="src\class\scenes\credits.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\clases\gameplay.h">
+    <ClInclude Include="src\class\scenes\gameplay.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\clases\character.h">
+    <ClInclude Include="src\class\game_objects\character.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\clases\obstacle.h">
+    <ClInclude Include="src\class\game_objects\obstacle.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\clases\gameplay_vs.h">
+    <ClInclude Include="src\class\scenes\gameplay_vs.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\class\game_objects\background_parallax.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

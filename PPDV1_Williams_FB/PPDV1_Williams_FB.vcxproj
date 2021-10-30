@@ -55,11 +55,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependences\raylib\include;$(SolutionDir)src\include\clases;$(SolutionDir)src\include\other</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependences\raylib\include;$(SolutionDir)src;</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -75,14 +76,15 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependences\raylib\include;$(SolutionDir)src\include\clases;$(SolutionDir)src\include\other</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependences\raylib\include;$(SolutionDir)src;</AdditionalIncludeDirectories>
       <WholeProgramOptimization>false</WholeProgramOptimization>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -98,28 +100,30 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\define\clases\button.cpp" />
-    <ClCompile Include="src\define\clases\character.cpp" />
-    <ClCompile Include="src\define\clases\credits.cpp" />
-    <ClCompile Include="src\define\clases\gameplay.cpp" />
-    <ClCompile Include="src\define\clases\gameplay_vs.cpp" />
-    <ClCompile Include="src\define\clases\game_manager.cpp" />
-    <ClCompile Include="src\define\clases\menu.cpp" />
-    <ClCompile Include="src\define\clases\obstacle.cpp" />
-    <ClCompile Include="src\define\clases\scene_manager.cpp" />
-    <ClCompile Include="src\define\other\main.cpp" />
+    <ClCompile Include="src\class\game_objects\background_parallax.cpp" />
+    <ClCompile Include="src\class\user_interface\button.cpp" />
+    <ClCompile Include="src\class\game_objects\character.cpp" />
+    <ClCompile Include="src\class\scenes\credits.cpp" />
+    <ClCompile Include="src\class\scenes\gameplay.cpp" />
+    <ClCompile Include="src\class\scenes\gameplay_vs.cpp" />
+    <ClCompile Include="src\class\scenes\game_manager.cpp" />
+    <ClCompile Include="src\class\scenes\menu.cpp" />
+    <ClCompile Include="src\class\game_objects\obstacle.cpp" />
+    <ClCompile Include="src\class\scenes\scene_manager.cpp" />
+    <ClCompile Include="src\class\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\include\clases\button.h" />
-    <ClInclude Include="src\include\clases\character.h" />
-    <ClInclude Include="src\include\clases\credits.h" />
-    <ClInclude Include="src\include\clases\gameplay.h" />
-    <ClInclude Include="src\include\clases\gameplay_vs.h" />
-    <ClInclude Include="src\include\clases\game_manager.h" />
-    <ClInclude Include="src\include\clases\menu.h" />
-    <ClInclude Include="src\include\clases\obstacle.h" />
-    <ClInclude Include="src\include\clases\scene_manager.h" />
-    <ClInclude Include="src\include\other\variables.h" />
+    <ClInclude Include="src\class\game_objects\background_parallax.h" />
+    <ClInclude Include="src\class\user_interface\button.h" />
+    <ClInclude Include="src\class\game_objects\character.h" />
+    <ClInclude Include="src\class\scenes\credits.h" />
+    <ClInclude Include="src\class\scenes\gameplay.h" />
+    <ClInclude Include="src\class\scenes\gameplay_vs.h" />
+    <ClInclude Include="src\class\scenes\game_manager.h" />
+    <ClInclude Include="src\class\scenes\menu.h" />
+    <ClInclude Include="src\class\game_objects\obstacle.h" />
+    <ClInclude Include="src\class\scenes\scene_manager.h" />
+    <ClInclude Include="src\class\variables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
