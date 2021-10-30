@@ -31,6 +31,7 @@ namespace FlappyBird
 	const short maxButtonsMenu = 4;
 	const Color menuClearBackgroundColor = WHITE;
 	static const string version = "V0.3";
+	static const string tutorial = "\nTUTORIAL: \nSingle player: \n -Jump with spacebar. \n -Avoid obstacles going through the middle. \n -The score is based on how many obstacles you were able to avoid. \n\nMultiplayer: \n -The objective is to avoid obstacles, whoever does not lose all their lives wins.";
 
 	//Credits
 	const Color creditsClearBackgroundColor = WHITE;

@@ -34,14 +34,17 @@ namespace FlappyBird
 
 	void Gameplay::Update(SceneManager* sceneManager)
 	{
-		character->UpdateCharacter();
-		obstacle->UpdateObstacle(obstacleVelocity);
+		if (!gameOver)
+		{
+			character->UpdateCharacter();
+			obstacle->UpdateObstacle(obstacleVelocity);
 
-		if (PassThroughObstacle(character, obstacle)) AddScore();
+			if (PassThroughObstacle(character, obstacle)) AddScore();
+
+			BackgroundTexturesParallax();
+		}
 
 		EndGameCondition(sceneManager);
-
-		BackgroundTexturesParallax();
 	}
 
 	void Gameplay::Draw()
@@ -64,6 +67,10 @@ namespace FlappyBird
 			DrawText("GAME OVER", centerX - MeasureText("GAME OVER", 60) / 2, centerY - 30, 60, BLACK);
 			DrawText("'ENTER' to retry", centerX - MeasureText("'ENTER' to retry", 20) / 2, centerY + 80, 20, BLACK);
 			DrawText("'Q' to main menu", centerX - MeasureText("'Q' to main menu", 20) / 2, centerY + 130, 20, BLACK);
+		}
+		else
+		{
+			DrawText("P1 press SPACE BAR to jump", 10, GetScreenHeight() - 20, 20, BLACK);
 		}
 
 		EndDrawing();
