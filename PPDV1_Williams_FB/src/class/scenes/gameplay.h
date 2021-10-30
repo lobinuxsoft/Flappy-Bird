@@ -1,23 +1,20 @@
-#ifndef gameplay_vs_h
-#define gameplay_vs_h
+#ifndef gameplay_h
+#define gameplay_h
 
-#include "character.h"
-#include "obstacle.h"
+#include "class/game_objects/character.h"
+#include "class/game_objects/obstacle.h"
 #include "scene_manager.h"
 
-namespace FlappyBird
+namespace FlappyBird 
 {
-	class GameplayVs
+	class Gameplay
 	{
 	private:
-		const int maxLives = 3;
+		unsigned int gameScore = 0;
+		unsigned gameHighscore = 0;
+		bool gameOver = false;
 
-		bool matchInProcess = true;
-		int player1Lives = maxLives;
-		int player2Lives = maxLives;
-
-		Character* player1;
-		Character* player2;
+		Character* character;
 		Obstacle* obstacle;
 
 		float obstacleVelocity;
@@ -35,13 +32,14 @@ namespace FlappyBird
 		float scrollingMidTwo;
 		float scrollingFore;
 	public:
-		GameplayVs();
-		~GameplayVs();
+		Gameplay();
+		~Gameplay();
 
 		void Input();
 		void Update(SceneManager* sceneManager);
 		void Draw();
 
+		bool PassThroughObstacle(Character* character, Obstacle* obstacle);
 		bool CollisionCharacterObstacle(Character* character, Obstacle* obstacle);
 		void EndGameCondition(SceneManager* sceneManager);
 		void ResetGame();
@@ -51,8 +49,8 @@ namespace FlappyBird
 		void UnloadTextures();
 		void DrawBackgroundTextures();
 		void BackgroundTexturesParallax();
-		void DrawInputText();
-		void DrawPlayerLives();
+
+		void AddScore();
 	};
 }
 
