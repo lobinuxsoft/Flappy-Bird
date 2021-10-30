@@ -8,7 +8,7 @@ namespace FlappyBird
 	class Obstacle
 	{
 	private:
-		const float verticalOffset = 110;
+		const int verticalOffset = 110;
 		const float width = 50;
 		bool passThroughObstacles = false;
 		float x;

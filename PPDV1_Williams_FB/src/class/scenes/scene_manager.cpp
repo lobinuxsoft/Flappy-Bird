@@ -7,9 +7,9 @@ namespace FlappyBird
 		SetCurrentScene(initialScene);
 	}
 
-	void SceneManager::SetCurrentScene(Scenes currentScene)
+	void SceneManager::SetCurrentScene(Scenes curScene)
 	{
-		this->currentScene = currentScene;
+		this->currentScene = curScene;
 	}
 	Scenes SceneManager::GetCurrentScene()
 	{

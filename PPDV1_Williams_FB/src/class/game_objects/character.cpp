@@ -11,14 +11,14 @@ namespace FlappyBird
 		moveStatus = Move_Status::still;
 		textureShown = Texture_Shown::mid;
 		characterTextureDown = LoadTexture("assets/player/bluebird-downflap.png");
-		characterTextureDown.width = radius * 2;
-		characterTextureDown.height = radius * 2;
+		characterTextureDown.width = static_cast<int>(radius) * 2;
+		characterTextureDown.height = static_cast<int>(radius) * 2;
 		characterTextureMid = LoadTexture("assets/player/bluebird-midflap.png");
-		characterTextureMid.width = radius * 2;
-		characterTextureMid.height = radius * 2;
+		characterTextureMid.width = static_cast<int>(radius) * 2;
+		characterTextureMid.height = static_cast<int>(radius) * 2;
 		characterTextureUp = LoadTexture("assets/player/bluebird-upflap.png");
-		characterTextureUp.width = radius * 2;
-		characterTextureUp.height = radius * 2;
+		characterTextureUp.width = static_cast<int>(radius) * 2;
+		characterTextureUp.height = static_cast<int>(radius) * 2;
 		velocity = baseVelocity;
 		fallingSpeed = baseFallingSpeed;
 		jumpingTime = 0.0f;
@@ -54,10 +54,10 @@ namespace FlappyBird
 	{
 
 #if _DEBUG
-		DrawCircle(position.x, position.y, radius, BLACK);
+		DrawCircle(static_cast<int>(position.x), static_cast<int>(position.y), radius, BLACK);
 #endif	
 
-		DrawText(playerID.c_str(), position.x, position.y - (radius + 20), 20, BLACK);
+		DrawText(playerID.c_str(), static_cast<int>(position.x), static_cast<int>(position.y - (radius + 20)), 20, BLACK);
 
 		switch (textureShown) //DrawTexturePro es medio dificil de entender como funciona no te recomiendo que lo toques mucho
 		{

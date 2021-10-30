@@ -68,10 +68,10 @@ namespace FlappyBird
 		EndDrawing();
 	}
 
-	bool GameplayVs::CollisionCharacterObstacle(Character* character, Obstacle* obstacle)
+	bool GameplayVs::CollisionCharacterObstacle(Character* chara, Obstacle* obs)
 	{
-		return (CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetTopRec())
-			|| CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetDownRec()));
+		return (CheckCollisionCircleRec(chara->GetPosition(), chara->GetRadius(), obs->GetTopRec())
+			|| CheckCollisionCircleRec(chara->GetPosition(), chara->GetRadius(), obs->GetDownRec()));
 	}
 
 	void GameplayVs::EndGameCondition(SceneManager* sceneManager) //Las dos condiciones de derrota son la colision de los objetos y cuando el pajaro toca el borde

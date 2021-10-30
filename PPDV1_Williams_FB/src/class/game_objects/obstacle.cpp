@@ -5,7 +5,7 @@ namespace FlappyBird
 	Obstacle::Obstacle() //Esta compuesto de dos rectangulos
 	{
 		x = GetScreenWidth() + width;
-		y = GetScreenHeight()/2;
+		y = GetScreenHeight() * 0.5f;
 
 		topRec = Rectangle{ 0,0,0,0 };
 		downRec = Rectangle{ 0,0,0,0 };
@@ -93,7 +93,7 @@ namespace FlappyBird
 			x + width * 0.35f,
 			y - verticalOffset,
 			width * 0.25f,
-			verticalOffset * 2
+			verticalOffset * 2.0f
 		};
 	}
 

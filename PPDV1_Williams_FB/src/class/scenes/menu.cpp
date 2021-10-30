@@ -119,7 +119,7 @@ namespace FlappyBird
 		DrawText(version.c_str(), GetScreenWidth() - 100, GetScreenHeight() - 50, creditsFontSize, creditsColor);
 		DrawText(tittle.c_str(), GetScreenWidth() - MeasureText(tittle.c_str(), tittleFontSize) - tittleFontSize/2, tittleFontSize, tittleFontSize, tittleColor);
 
-		Rectangle tutRect = { GetScreenWidth() * 0.48f, GetScreenHeight() * 0.25f, GetScreenWidth() / 2, GetScreenHeight() * 0.7f };
+		Rectangle tutRect = { GetScreenWidth() * 0.48f, GetScreenHeight() * 0.25f, GetScreenWidth() * 0.5f, GetScreenHeight() * 0.7f };
 
 		DrawTextRec(GetFontDefault(), tutorial.c_str(), tutRect, 16, 1, false, BLACK);
 

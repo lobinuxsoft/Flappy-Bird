@@ -68,17 +68,21 @@ namespace FlappyBird
 			DrawText("'ENTER' to retry", centerX - MeasureText("'ENTER' to retry", 20) / 2, centerY + 80, 20, BLACK);
 			DrawText("'Q' to main menu", centerX - MeasureText("'Q' to main menu", 20) / 2, centerY + 130, 20, BLACK);
 		}
+		else
+		{
+			DrawText("P1 press SPACE BAR to jump", 10, GetScreenHeight() - 20, 20, BLACK);
+		}
 
 		EndDrawing();
 	}
 
-	bool Gameplay::PassThroughObstacle(Character* character, Obstacle* obstacle)
+	bool Gameplay::PassThroughObstacle(Character* chara, Obstacle* obs)
 	{
-		if(!obstacle->GetPassThroughObstacle())
+		if(!obs->GetPassThroughObstacle())
 		{
-			if (CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetMidRec()))
+			if (CheckCollisionCircleRec(chara->GetPosition(), chara->GetRadius(), obs->GetMidRec()))
 			{
-				obstacle->SetPassThroughObstacle(true);
+				obs->SetPassThroughObstacle(true);
 				return true;
 			}
 			else
@@ -89,10 +93,10 @@ namespace FlappyBird
 		return false;
 	}
 
-	bool Gameplay::CollisionCharacterObstacle(Character* character, Obstacle* obstacle)
+	bool Gameplay::CollisionCharacterObstacle(Character* chara, Obstacle* obs)
 	{
-		return (CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetTopRec())
-			|| CheckCollisionCircleRec(character->GetPosition(), character->GetRadius(), obstacle->GetDownRec()));
+		return (CheckCollisionCircleRec(chara->GetPosition(), chara->GetRadius(), obs->GetTopRec())
+			|| CheckCollisionCircleRec(chara->GetPosition(), chara->GetRadius(), obs->GetDownRec()));
 	}
 
 	void Gameplay::EndGameCondition(SceneManager* sceneManager) //Las dos condiciones de derrota son la colision de los objetos y cuando el pajaro toca el borde
