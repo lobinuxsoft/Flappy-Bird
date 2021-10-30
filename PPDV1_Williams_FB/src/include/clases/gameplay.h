@@ -10,6 +10,10 @@ namespace FlappyBird
 	class Gameplay
 	{
 	private:
+		unsigned int gameScore = 0;
+		unsigned gameHighscore = 0;
+		bool gameOver = false;
+
 		Character* character;
 		Obstacle* obstacle;
 
@@ -35,6 +39,7 @@ namespace FlappyBird
 		void Update(SceneManager* sceneManager);
 		void Draw();
 
+		bool PassThroughObstacle(Character* character, Obstacle* obstacle);
 		bool CollisionCharacterObstacle(Character* character, Obstacle* obstacle);
 		void EndGameCondition(SceneManager* sceneManager);
 		void ResetGame();
@@ -44,6 +49,8 @@ namespace FlappyBird
 		void UnloadTextures();
 		void DrawBackgroundTextures();
 		void BackgroundTexturesParallax();
+
+		void AddScore();
 	};
 }
 

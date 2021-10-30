@@ -171,8 +171,8 @@ namespace FlappyBird
 			break;
 		}
 	}
-	bool Character::PlayerTouchesDownBorder() //Si el pajaro toca el borde de abajo
+	bool Character::PlayerToucheBorders() //Si el pajaro toca el borde inferior o superior
 	{
-		return position.y + radius >= GetScreenHeight();
+		return position.y + radius >= GetScreenHeight() || position.y - radius <= 0;
 	}
 }

@@ -78,13 +78,13 @@ namespace FlappyBird
 	{
 		if (matchInProcess)
 		{
-			if (CollisionCharacterObstacle(player1, obstacle) || player1->PlayerTouchesDownBorder())
+			if (CollisionCharacterObstacle(player1, obstacle) || player1->PlayerToucheBorders())
 			{
 				player1Lives--;
 				ResetGame();
 			}
 
-			if (CollisionCharacterObstacle(player2, obstacle) || player2->PlayerTouchesDownBorder())
+			if (CollisionCharacterObstacle(player2, obstacle) || player2->PlayerToucheBorders())
 			{
 				player2Lives--;
 				ResetGame();
